@@ -18,10 +18,7 @@ var corsOptions = {
 
 
 db.mongoose.connect(process.env.DB_CONNECTION, {useNewUrlParser: true, useUnifiedTopology: true});
-db.mongoose.connection.on('connected', () => {
-  console.log('Connected to Database ' + process.env.DB_CONNECTION);
-  
-});
+
 // On Error
 db.mongoose.connection.on('error', (err) => {
   console.log('Database error '+err);
