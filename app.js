@@ -26,7 +26,6 @@ db.mongoose.connection.on('connected', () => {
 db.mongoose.connection.on('error', (err) => {
   console.log('Database error '+err);
 });
-const path = require("path");
 
 //routes
 
