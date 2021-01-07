@@ -46,9 +46,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
   
 
 
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to Health-thing API." });
-});
 
 
 app.use("/", anders);
