@@ -2,19 +2,10 @@
 html, body{
     font-family: 'Poppins', sans-serif;
     height: 100%;
-    color: #403D46
 }
 html{
-    background-color: rgb(103, 188, 217, .2);
-    background-image: url(./assets//header/headerbackground.png);
-    background-repeat: no-repeat;
-    /* background-position: center; */
-    background-position-x: center;
-    background-size: contain;
-
+    background-color: rgb(103, 188, 217, .2)
 }
 body{
-    margin: 0;
-    width: 100%;
-    overflow-x: hidden;
+    margin: 0px
 }

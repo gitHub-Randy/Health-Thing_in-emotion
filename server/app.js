@@ -16,6 +16,8 @@ var corsOptions = {
   origin: '*'
 };
 
+const path = require("path");
+
 //routes
 
 const anders = require('./routes/anders');
@@ -60,6 +62,10 @@ app.get("/", (req, res) => {
 app.use("/", anders);
 app.use("/", emotion);
 
+app.use(express.static(path.join(__dirname, 'public')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/index.html'));
+})
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

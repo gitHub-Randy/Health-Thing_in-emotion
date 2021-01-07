@@ -1,8 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
-
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -11,36 +7,9 @@ import { map, shareReplay } from 'rxjs/operators';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  constructor() { }
 
-  headerbackground: string = "headerbackground.png"
-  title: string= "Hoi UserName!"
-  shouldShowMenu: boolean = false;
-  menuState: boolean = false
   ngOnInit(): void {
-  }
-
-  
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
-  showMenu() {
-    this.shouldShowMenu = !this.shouldShowMenu;
-    
-  }
-
-  close() {
-    this.menuState = !this.menuState
-  }
-
-  setBackground(bg){
-    this.headerbackground = bg;
-  }
-
-  setTitle(t){
-    this.title = t;
   }
 
 }
