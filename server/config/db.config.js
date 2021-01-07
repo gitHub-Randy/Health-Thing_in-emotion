@@ -1,5 +1,4 @@
+require('dotenv').config
 module.exports = {
-    HOST: "localhost",
-    PORT: 27017,
-    DB: "ht_DB"
+    database: process.env.DB_Connection
   };

@@ -1,0 +1,1 @@
+DB_CONNECTION='mongodb+srv://dbAdmin:<password>@ht-avans-cluster.mjm8q.mongodb.net/ht_test?retryWrites=true&w=majority'
