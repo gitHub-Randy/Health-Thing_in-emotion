@@ -1,66 +1,102 @@
 <app-header></app-header>
+
 <div class="help">
     <h3>HOE VOEL JE JE VANDAAG?</h3>
-    <p>
-    Kies een of meerdere GIF’s wat <br>
-    je gevoel weergeeft!
-    </p>
 </div>
-<div class="selection">
-    <mat-card class="other" *ngIf="other">
-        <mat-card-title>Anders...</mat-card-title>
-        <mat-card-content>
-            <input placeholder="beschrijf hier je gevoel">
-        </mat-card-content>
-        <mat-card-actions>
-            <button mat-button (click)="otherEmotion()">OK</button>
-        </mat-card-actions>
-    </mat-card>
+<div class="carrousel">
 
-    <div class="categorySelect">
-        <button mat-icon-button (click)="onLeft()">
-            <mat-icon>keyboard_arrow_left</mat-icon>
-        </button>
-        <p class="categoryWord">{{currentCategory.categoryName}}</p>
-        <button mat-icon-button (click)="onRight()">
-            <mat-icon>keyboard_arrow_right</mat-icon>
-        </button>
-    </div>
-    <div class="chipDiv">
-        <mat-chip-list multiple [selectable]="true">
-            <div class="gridContainer" aria-label="emotion selection">
-                <mat-chip *ngFor="let emotion of chipData; index as i" class="gridItem-{{i}}" id="{{emotion.emotionName}}"    (click)="selectedEmotion($event.target)"> 
- 
+    <button mat-icon-button (click)="goToIndex(currentCategory.possibleCategroyIndex-1)" id="leftBtn">
+        <mat-icon id="categoryArrowLeft">keyboard_arrow_left</mat-icon>
+    </button>
+    <div class="selection" [@emotionTrigger]="animationState" (@emotionTrigger.done)="resetAnimationState()"
+        (swipeRight)="startAnimation('slideRight')" (swipeLeft)="startAnimation('slideLeft')">
 
-                    {{emotion.emotionName}} 
-                    <mat-icon matChipRemove id="{{emotion.emotionName}}" *ngIf="emotion.chipState == true" style="color: white; opacity: 100%;" (click)="removeChosenEmotion($event)">cancel</mat-icon>
+        <div class="categorySelect">
 
-                </mat-chip>
-                <mat-chip class="gridItem-{{chipData.length}}" (click)="otherEmotion()">ANDERS..</mat-chip>
-            </div>
-        </mat-chip-list>
-    </div>
+            <p class="categoryWord">{{currentCategory.categoryName}}</p>
 
-    <div class="gifs">
-        <div *ngIf="shouldShowGifs">
-            <cdk-virtual-scroll-viewport itemSize="77" class="scrollContainer">
-                <div class="gifGrid">
-                    <img  id="gif-{{i}}" *ngFor="let src of gifSources;index as i;" src={{src}}
-                        alt="Card image cap" (click)="selectGif($event.target)" >
-                </div>
-            </cdk-virtual-scroll-viewport>
         </div>
+
+        <div class="chipDiv">
+            <mat-chip-list multiple [selectable]="true">
+                <div class="gridContainer" aria-label="emotion selection"
+                    *ngIf="currentCategory.categoryName != 'ANDERS' else anders">
+
+                    <mat-chip *ngFor="let emotion of chipData; index as i" class="gridItem-{{i}}"
+                        id="{{emotion.emotionName}}" (click)="selectChip($event.target)">
+
+
+                        {{emotion.emotionName}}
+                        <mat-icon matChipRemove id="{{emotion.emotionName}}-{{i}}"
+                            *ngIf="emotion.chipState == 'SELECTED'" style="color: white; opacity: 100%;"
+                            (click)="removeChosenEmotion($event.target)">cancel</mat-icon>
+
+                    </mat-chip>
+                </div>
+            </mat-chip-list>
+            <div *ngIf="shouldShowGifs" class="gifs">
+                <cdk-virtual-scroll-viewport itemSize="77" class="scrollContainer">
+                    <div class="gifGrid">
+                        <img id="gif-{{i}}" *ngFor="let src of gifSources;index as i;" src={{src}} alt="Card image cap"
+                            (click)="selectGif($event.target)">
+                    </div>
+                </cdk-virtual-scroll-viewport>
+            </div>
+        </div>
+
+
+
+
     </div>
 
+    <button mat-icon-button (click)="goToIndex(currentCategory.possibleCategroyIndex+1)" id="rightBtn">
+        <mat-icon id="categoryArrowRight">keyboard_arrow_right</mat-icon>
+    </button>
 
-    
+
+</div>
+
+<div class="swipeControls" id="swipeControls">
+    <mat-icon id="swipeCircle" style="color: #68BCD8;background-color: #68BCD8;" (click)="goToIndex(0)">lens</mat-icon>
+    <mat-icon id="swipeCircle" style="color: #FFFFFF; background-color: #FFFFFF;" (click)="goToIndex(1)">lens</mat-icon>
+    <mat-icon id="swipeCircle" style="color: #FFFFFF;background-color: #FFFFFF;" (click)="goToIndex(2)">lens</mat-icon>
+    <mat-icon id="swipeCircle" style="color: #FFFFFF;background-color: #FFFFFF;" (click)="goToIndex(3)">lens</mat-icon>
+    <mat-icon id="swipeCircle" style="color: #FFFFFF;background-color: #FFFFFF;" (click)="goToIndex(4)">lens</mat-icon>
+    <mat-icon id="swipeCircle" style="color: #FFFFFF;background-color: #FFFFFF;" (click)="goToIndex(5)">lens</mat-icon>
+    <mat-icon id="swipeCircle" style="color: #FFFFFF;background-color: #FFFFFF;" (click)="goToIndex(6)">lens</mat-icon>
+
+
 </div>
 
 <div class="bottom-bar">
-    <div class="prev">
-        <button mat-fab class="prevButton"><img src="../../../assets/icons/Path 12182.png"></button> Vorige
-    </div>
-    <div class="next" *ngIf="selectionComplete">
-        <button mat-fab class="nextButton"><img src="../../../assets/icons/Path 12181.png"></button> Volgende
+
+    <div class="next" *ngIf="chosenEmotions.length != 0">
+        <button mat-fab class="nextButton" (click)="sendEmotions()"><img src="../../../assets/icons/next.png"></button>
+        <p>Volgende</p>
     </div>
 </div>
+
+
+
+<ng-template #anders>
+    <div class="flexContainer">
+        <div class="addEmotion">
+            <input id="andersInput" name="andersInput" class="andersInput" placeholder="Typ hier je emotie in"
+                type="text" (change)="addToAnders($event.target.value)">
+            <button mat-raised-button id="deleteBtn" [disabled]="deleteOtherDisabled"
+                (click)="deleteOtherEmotion()">emotie wissen</button>
+        </div>
+        <div class="FlexItems">
+            <mat-chip *ngFor="let a of chipData; index as i" id="{{a.emotionName}}" (click)="selectChip($event.target)">
+
+
+                {{a.emotionName}}
+                <mat-icon matChipRemove id="{{a.emotionName}}-{{i}}" *ngIf="a.chipState == 'SELECTED'"
+                    style="color: white; opacity: 100%;" (click)="removeChosenEmotion($event.target)">cancel</mat-icon>
+
+            </mat-chip>
+
+
+        </div>
+    </div>
+</ng-template>
