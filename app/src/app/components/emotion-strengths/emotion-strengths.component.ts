@@ -11,6 +11,7 @@ import * as kf from '../emotion-selection/keyframes';
 import 'hammerjs';
 import { HelpPopUp2Component } from './help-pop-up2/help-pop-up2.component';
 import { EmotionService } from '../../services/emotion.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 
@@ -54,7 +55,7 @@ export class EmotionStrengthsComponent implements OnInit, AfterViewInit{
 
 
 
-  constructor(private router: Router, private description: MatDialog, private help: MatDialog, private help2: MatDialog, private EmotionService: EmotionService) {
+  constructor(private router: Router, private description: MatDialog, private help: MatDialog, private help2: MatDialog, private EmotionService: EmotionService,  private snackbar: MatSnackBar) {
     const navigation = this.router.getCurrentNavigation();
     const state = navigation.extras.state as {chosenEmotions: choosenEmotions[]};
     this.chosenEmotions = state.chosenEmotions;
@@ -132,6 +133,13 @@ export class EmotionStrengthsComponent implements OnInit, AfterViewInit{
       console.log("New Descriptions " + this.chosenEmotions[this.currentIndex].description);
     });
     
+  }
+
+  showSnackBar(message){
+    this.snackbar.open(message, "", {
+      duration: 1500,
+      panelClass: "snackbar2"
+    });
   }
 
   showHelp2(){
