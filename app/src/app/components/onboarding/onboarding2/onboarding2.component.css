@@ -41,6 +41,8 @@
 .skip{
     display: flex;
     justify-content: space-between;
+    text-align: right;
+
 
 }
 
@@ -52,6 +54,7 @@
     margin-top: 5%;
     margin-right: 10%;
     width: auto;
+
 }
 
 .skipbutton{
@@ -64,8 +67,8 @@
     color: #403D46;
     box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.20); 
     margin: auto;
-    width: 135%;
-    height: 33%;
+    width: 140%;
+    height: 37%;
     
 }
 
