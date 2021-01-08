@@ -1,5 +1,6 @@
 body{
     background-color:#FBE2E4;
+    height: 110%;
 }
 
 .cloud{
@@ -31,7 +32,7 @@ body{
   position: relative;
   display: grid;
   grid-template-rows: 15vh auto 17vh;
-  height: 100%;
+  height: 90%;
 }
 
 .skip{
