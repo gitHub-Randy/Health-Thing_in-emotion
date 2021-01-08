@@ -11,11 +11,13 @@ html{
     /* background-position: center; */
     background-position-x: center;
     background-size: contain;
+    overflow-y: auto;
+    overflow-x: hidden;
+
 
 }
 body{
     margin: 0;
     width: 100%;
-    overflow-x: hidden;
     
 }

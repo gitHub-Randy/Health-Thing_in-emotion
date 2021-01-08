@@ -22,10 +22,11 @@ body{
 
 .cloud3{
   z-index: 1;
-  position: absolute;
-  margin-top: 195%;
-  margin-left: -25%;
+  position: fixed;
+  bottom: -13%;
+  left: -27%;
 }
+
 
 .page{
   z-index: 2;
@@ -60,7 +61,6 @@ body{
     text-align: center;
     margin: auto;
     margin-bottom: 0;
-    /* margin: 65% auto auto auto; */
 }
 
 .content h1{

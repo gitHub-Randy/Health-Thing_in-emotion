@@ -1,56 +1,89 @@
-.header{
-    z-index: -10;
-    position: absolute;
+.header {
+  z-index: -10;
+  position: absolute;
 }
 
-.headercontent{
-    text-align: center;
-    display: flex;
-    flex-direction: column;
+.headercontent {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-position: top;
+  position: fixed;
+  top: 0%;
+  bottom: 52%;
+  width: 100%;
+  height: 100%;
+  background-size: 100% 50%;
 }
 
-.headercontent h1{
-    margin-top: 20%;
-    line-height: 1.2;
+.welcome {
+  color: white;
+  position: absolute;
+  top: 12%;
+  margin: 0px 20%;
+  font-family: "poppins";
+  font-size: 30px;
+  font-weight: 700;
+  color: #403D46;
 }
 
-.headercontent p{
-    color: white;
-    font-size: 18px;
-    font-weight: 500;
-    margin: 2%;
-    line-height: 1.2;
+.headercontent button {
+  width: 30%;
+  margin: 0 35%;
+  top: 25%;
+  position: absolute;
+
 }
 
-button{
-    background-color: #498598;
-    border: none;
-    border-radius: 24px;
-    color: white;
-    font-family: "poppins";
-    font-size: 18px;
-    font-weight: bold;
-    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.20);
-    padding: 2.5% 7% 2.5% 7%;
-    
+.headercontent p {
+  color: white;
+  position: absolute;
+  top: 32%;
+  left: 17%;
+  padding-right: 15%;
 }
 
-.content{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20%;
+button {
+  background-color: #498598;
+  border: none;
+  border-radius: 24px;
+  color: white;
+  font-family: "poppins";
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.2);
+  padding: 2.5% 7% 2.5% 7%;
 }
 
-.cloud{
-    z-index: -1;
-    position: absolute;
-    margin-top: 5%;
-    margin-right: 87%;
-    transform: scale(0.6);
-  }
+.content {
+  display: grid;
+  grid-template-rows: repeat(4, 25vh);
+}
 
-.health{
-    margin-top: 4%;
-    margin-bottom: 10%;
+.logo {
+  grid-row-start: 3;
+  grid-row-end: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cross {
+  height: 80%;
+}
+
+.cloud {
+  z-index: -1;
+  position: absolute;
+  margin-top: 5%;
+  margin-right: 87%;
+  transform: scale(0.6);
+}
+
+.health {
+  margin-top: 4%;
+  margin-bottom: 10%;
 }

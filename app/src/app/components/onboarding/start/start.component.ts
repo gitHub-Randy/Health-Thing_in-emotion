@@ -22,7 +22,10 @@ export class StartComponent implements OnInit{
   }
 
   setbg() {
-    let doc = document.getElementById('html');
-    doc.style.backgroundImage = "url('../../../assets/onboarding/header.png')";
+    let doc = document.getElementById('html')
+    doc.style.backgroundImage = "none";
+
+    let header = document.getElementById("headercontent");
+    header.style.backgroundImage = "url('../../../assets/onboarding/header.png')";
     }
 }
