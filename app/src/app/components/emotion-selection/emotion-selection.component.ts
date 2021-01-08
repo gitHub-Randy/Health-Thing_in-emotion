@@ -6,7 +6,7 @@ import { afschuw, angst, boos, verdriet, verrassing, vreugde } from 'src/app/mod
 import { HeaderComponent } from '../header/header.component';
 import { GifServiceService } from 'src/app/services/gif-service.service';
 const POSSIBLE_CATEGROYS = ["VREUGDE", "VERDRIET", "ANGST", "BOOS", "VERRASSING", "AFSCHUW", "ANDERS"]
-import { trigger, keyframes, animate, transition, sequence, stagger, query } from '@angular/animations'
+import { trigger, keyframes, animate, transition, sequence, stagger, query, style } from '@angular/animations'
 import * as kf from './keyframes';
 import 'hammerjs';
 import { Router } from '@angular/router';
@@ -15,6 +15,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AfterViewInit } from '@angular/core';
 import { HelpPopUp3Component } from './help-pop-up3/help-pop-up3.component'
 import { chipState } from 'src/app/interfaces/chipStates';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-emotion-selection',
   templateUrl: './emotion-selection.component.html',
@@ -52,7 +53,7 @@ import { chipState } from 'src/app/interfaces/chipStates';
 
 export class EmotionSelectionComponent implements OnInit, AfterViewInit {
 
-  constructor(private gifService: GifServiceService, private ref: ChangeDetectorRef, private router: Router, private andersService: AndersService,private help: MatDialog) {
+  constructor(private gifService: GifServiceService, private ref: ChangeDetectorRef, private router: Router, private andersService: AndersService,private help: MatDialog, private snackbar: MatSnackBar) {
     if (this.chosenEmotions.length != 0){
     const navigation = this.router.getCurrentNavigation();
     const state = navigation.extras.state as {chosenEmotions: choosenEmotions[]};
@@ -276,6 +277,8 @@ export class EmotionSelectionComponent implements OnInit, AfterViewInit {
     } else {
       this.deleteOtherDisabled = true
     }
+    let formatText = chip.id.toLowerCase()
+    this.showSnackBar( formatText + " verwijderd");
   }
 
   //#endregion remove
@@ -401,6 +404,16 @@ export class EmotionSelectionComponent implements OnInit, AfterViewInit {
     if (this.currentCategory.categoryName == "ANDERS") {
       this.deleteOtherDisabled = true;
     }
+    
+    let formatText = this.currentChip.emotionName.toLowerCase()
+    this.showSnackBar(formatText + " toegevoegd");
+  }
+
+  showSnackBar(message){
+    this.snackbar.open(message, "", {
+      duration: 1500,
+      panelClass: "snackbar"
+    });
   }
 
   hideGifs() {

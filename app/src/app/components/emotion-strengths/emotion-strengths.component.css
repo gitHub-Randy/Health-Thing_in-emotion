@@ -290,3 +290,24 @@
 ::ng-deep  .backdropBackground3{
   background-color: rgba(0,0,0,.50);
 } 
+
+::ng-deep .snackbar2{
+  background-color: white;  
+}
+
+::ng-deep .mat-simple-snackbar{
+  text-transform: capitalize;
+  font-family: "poppins";
+  font-weight: 500;
+  font-size: 16px;
+  color: #403D46;
+}
+
+::ng-deep .mat-snack-bar-handset .mat-snack-bar-container {
+  width: auto !important;
+  display: flex;
+  justify-content: center;
+  margin: auto auto 26% auto !important;
+  border-radius: 18px !important;
+
+}
