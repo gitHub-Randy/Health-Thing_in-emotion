@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+require('dotenv').config()
 
 
 const bodyParser = require("body-parser");
@@ -10,11 +11,16 @@ const cors = require("cors");
 
 const app = express();
 const db = require("./models");
-
 const dbConfig = require ("./config/db.config");
 var corsOptions = {
   origin: '*'
 };
+
+
+
+
+console.log(process.env.DB_CONNECTION)
+
 
 
 db.mongoose.connect(process.env.DB_CONNECTION, {useNewUrlParser: true, useUnifiedTopology: true});

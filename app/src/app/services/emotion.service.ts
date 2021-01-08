@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { choosenEmotions } from '../interfaces/chosenEmotions';
 
-const API_URL = '/emotion/chosenEmotions';
+const API_URL = 'http://localhost:8080/emotion/chosenEmotions';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };

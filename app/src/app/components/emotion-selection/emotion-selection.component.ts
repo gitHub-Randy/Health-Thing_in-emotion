@@ -396,7 +396,7 @@ export class EmotionSelectionComponent implements OnInit, AfterViewInit {
       })
     }
     this.currentChip.chipState = chipState.SELECTED
-    this.changeColorOfChip(document.getElementById(this.currentChip.emotionName), { emotionName: this.currentChip.emotionName, chipState: this.currentChip.chipState })
+    this.changeColorOfChip(document.getElementById(this.currentChip.emotionName), { emotionName: this.currentChip.emotionName, chipState: this.currentChip.chipState, keyword: this.currentChip.keyword })
     this.greyOutNotSelectedGifs(gifElement)
     if (this.currentCategory.categoryName == "ANDERS") {
       this.deleteOtherDisabled = true;
@@ -499,7 +499,8 @@ export class EmotionSelectionComponent implements OnInit, AfterViewInit {
       if (emotionName != '') {
         let temp = {
           emotionName: emotionName,
-          chipState: chipState.NONE
+          chipState: chipState.NONE,
+          keyword: emotionName
         };
         // this.newAnders.push(temp);
         this.chipData.push(temp)
