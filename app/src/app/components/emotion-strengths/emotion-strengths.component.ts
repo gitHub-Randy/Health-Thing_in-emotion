@@ -161,6 +161,8 @@ export class EmotionStrengthsComponent implements OnInit, AfterViewInit{
 
   setbg() {
     let doc = document.getElementById('html');
+    doc.style.overflowY = "auto"
+
     doc.style.backgroundImage = "url('../../../assets/header/headerbackgroundYellow.png')";
     doc.style.backgroundColor = "#FDF4E3"
   }

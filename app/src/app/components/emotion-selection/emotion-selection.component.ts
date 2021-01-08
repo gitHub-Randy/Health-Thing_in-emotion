@@ -183,6 +183,7 @@ export class EmotionSelectionComponent implements OnInit, AfterViewInit {
 
   setbg() {
     let doc = document.getElementById('html');
+    doc.style.overflowY = "auto"
     doc.style.backgroundImage = "url('../../../assets/header/headerbackground.png')";
     doc.style.backgroundColor = "rgb(103, 188, 217, .2)"
   }
