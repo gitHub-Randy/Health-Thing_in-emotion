@@ -6,6 +6,8 @@
   border-radius: 22px;
   border: none;
   width: 50%;
+  height: 100%;
+
 }
 
 .andersInput,
@@ -25,6 +27,8 @@ input[type="text"]:focus {
   margin-top: 5px;
   line-height: 0%;
   margin-left: 5px;
+  height: 110%;
+
 }
 
 #deleteBtn:disabled {
