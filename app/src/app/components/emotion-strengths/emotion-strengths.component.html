@@ -1,7 +1,8 @@
     <div class="page">
         <app-header></app-header>
-        <div class='content'>
+            <div class="tekst">
             <h3>HOE STERK ZIJN DEZE <br> GEVOELENS?</h3>
+            </div>
             <div class="carrousel">
                 <button mat-icon-button (click)="startAnimation('slideRight')" id="leftBtn" [disabled]="chosenEmotions.length <= 1">
                     <mat-icon id="categoryArrow">keyboard_arrow_left</mat-icon>
@@ -29,8 +30,8 @@
                 <ng-container *ngFor="let i of chosenEmotions; index as x">
                     <mat-icon *ngIf="x > 0"  id="swipeCircle" style="color: #FFFFFF; background-color: #FFFFFF;" (click)="goToIndex(x)">lens</mat-icon>
                 </ng-container>
-          </div>
-        </div>
+            </div>
+    
         <div class="bottom-bar">
             <div class="prev">
                 <button mat-fab class="prevButton" (click)="prevpage()"><img src="../../../assets/icons/prev.png"></button> 
