@@ -29,6 +29,9 @@ body{
 .page{
   z-index: 2;
   position: relative;
+  display: grid;
+  grid-template-rows: 15vh auto 25vh;
+  height: 100%;
 }
 
 .skip{
@@ -50,7 +53,8 @@ body{
 
 .content{
     text-align: center;
-    margin: 80% auto auto auto;
+    margin: auto;
+    margin-bottom: 25%;
 }
 
 h1{
@@ -83,7 +87,7 @@ h1{
 .bottom-bar{
   display: grid;
   justify-content: space-between;
-  margin: 50.5% 7% auto 7%;
+  margin: auto 7% 2% 7%;
 }
 
 .prev{

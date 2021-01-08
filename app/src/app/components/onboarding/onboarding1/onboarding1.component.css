@@ -1,6 +1,8 @@
 body{
     background-color:#E8F4EE;   
+    
 }
+
 
 .cloud{
   z-index: 1;
@@ -28,6 +30,9 @@ body{
 .page{
   z-index: 2;
   position: relative;
+  display: grid;
+    grid-template-rows: 15vh auto 25vh;
+    height: 100%;
 }
 
 .skip{
@@ -53,7 +58,9 @@ body{
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin: 65% auto auto auto;
+    margin: auto;
+    margin-bottom: 0;
+    /* margin: 65% auto auto auto; */
 }
 
 .content h1{
@@ -63,8 +70,8 @@ body{
 .bottom-bar{
     display: grid;
     justify-content: space-between;
-    margin: 26% 7% auto 7%;
-  }
+    margin: auto 7% 2% 7%;
+    }
   
   .prev{
     display: flex;
