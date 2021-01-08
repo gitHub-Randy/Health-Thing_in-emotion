@@ -527,11 +527,11 @@
   /***/
   function _(module, exports, __webpack_require__) {
     __webpack_require__(
-    /*! C:\Users\Tim\Desktop\School\Minor\Health-Thing_in-emotion\server\app\node_modules\@angular\material\prebuilt-themes\indigo-pink.css */
+    /*! E:\School_projects\Health-Thing_in-emotion\app\node_modules\@angular\material\prebuilt-themes\indigo-pink.css */
     "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css");
 
     module.exports = __webpack_require__(
-    /*! C:\Users\Tim\Desktop\School\Minor\Health-Thing_in-emotion\server\app\src\styles.css */
+    /*! E:\School_projects\Health-Thing_in-emotion\app\src\styles.css */
     "./src/styles.css");
     /***/
   }
