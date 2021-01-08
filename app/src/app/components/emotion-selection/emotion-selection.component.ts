@@ -152,6 +152,7 @@ export class EmotionSelectionComponent implements OnInit, AfterViewInit {
       data.forEach(element => {
         let temp = {
           emotionName: element.emotionName,
+          keyword: element.emotionName,
           chipState: chipState.NONE
         };
         emotionArray.push(temp)
@@ -163,16 +164,19 @@ export class EmotionSelectionComponent implements OnInit, AfterViewInit {
 
   // returns  an array filled with the avaiable emotions as strings
   convertEnumToArray(enumObject: Object) {
+
     let emotionArray = [];
     for (let eObj in enumObject) {
       if (eObj.length > 1) {
         let tempObject = {
-          emotionName: eObj,
+          emotionName: eObj.split("-")[0],
+          keyword: eObj.split("-")[1],
           chipState: chipState.NONE
         }
         emotionArray.push(tempObject);
       }
     }
+    
     return emotionArray;
   }
 
@@ -319,7 +323,7 @@ export class EmotionSelectionComponent implements OnInit, AfterViewInit {
           cData.chipState = chipState.PRESELECTED;
           this.changeColorOfChip(document.getElementById(cData.emotionName), cData)
         }
-        this.showGifs(cData.emotionName)
+        this.showGifs(cData.keyword)
       }
     })
     if (this.currentCategory.categoryName == "ANDERS" && this.currentChip.chipState.toString() != "SELECTED") {
