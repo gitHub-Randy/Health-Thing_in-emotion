@@ -1201,6 +1201,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "setbg",
         value: function setbg() {
           var doc = document.getElementById('html');
+          doc.style.overflowY = "auto";
           doc.style.backgroundImage = "url('../../../assets/header/headerbackground.png')";
           doc.style.backgroundColor = "rgb(103, 188, 217, .2)";
         }
@@ -2667,6 +2668,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "setbg",
         value: function setbg() {
           var doc = document.getElementById('html');
+          doc.style.overflowY = "auto";
           doc.style.backgroundImage = "url('../../../assets/header/headerbackgroundYellow.png')";
           doc.style.backgroundColor = "#FDF4E3";
         }
