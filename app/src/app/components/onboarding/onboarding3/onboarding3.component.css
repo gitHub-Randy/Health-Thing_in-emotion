@@ -30,7 +30,7 @@ body{
   z-index: 2;
   position: relative;
   display: grid;
-  grid-template-rows: 15vh auto 25vh;
+  grid-template-rows: 15vh auto 17vh;
   height: 100%;
 }
 
