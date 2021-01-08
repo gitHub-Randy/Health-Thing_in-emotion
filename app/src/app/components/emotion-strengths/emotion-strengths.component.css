@@ -188,6 +188,7 @@
 .mat-slider {
     width: 80%;
     margin-right: 5%;
+    z-index: 0;
 }
 
 ::ng-deep .mat-slider.mat-slider-horizontal .mat-slider-wrapper {

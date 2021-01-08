@@ -13,11 +13,16 @@ export class StartComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    
+    this.setbg()
   }
 
 
   nextpage(){
     this.router.navigateByUrl('onboarding/1');
   }
+
+  setbg() {
+    let doc = document.getElementById('html');
+    doc.style.backgroundImage = "url('../../../assets/onboarding/header.png')";
+    }
 }

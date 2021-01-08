@@ -55,7 +55,7 @@ export class EmotionStrengthsComponent implements OnInit, AfterViewInit{
 
 
 
-  constructor(private router: Router, private description: MatDialog, private help: MatDialog, private help2: MatDialog, private EmotionService: EmotionService,  private snackbar: MatSnackBar) {
+  constructor(private router: Router, private description: MatDialog, private help: MatDialog, private help2: MatDialog, private EmotionService: EmotionService) {
     const navigation = this.router.getCurrentNavigation();
     const state = navigation.extras.state as {chosenEmotions: choosenEmotions[]};
     this.chosenEmotions = state.chosenEmotions;
@@ -135,12 +135,7 @@ export class EmotionStrengthsComponent implements OnInit, AfterViewInit{
     
   }
 
-  showSnackBar(message){
-    this.snackbar.open(message, "", {
-      duration: 1500,
-      panelClass: "snackbar2"
-    });
-  }
+ 
 
   showHelp2(){
     this.help.open(HelpPopUpComponent, {

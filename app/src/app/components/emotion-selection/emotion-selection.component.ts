@@ -411,7 +411,7 @@ export class EmotionSelectionComponent implements OnInit, AfterViewInit {
 
   showSnackBar(message){
     this.snackbar.open(message, "", {
-      duration: 1500,
+      duration: 1000,
       panelClass: "snackbar"
     });
   }
