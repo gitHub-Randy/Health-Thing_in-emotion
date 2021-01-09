@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -14,9 +14,10 @@ export class HeaderComponent implements OnInit {
   constructor(private breakpointObserver: BreakpointObserver) { }
 
   headerbackground: string = "headerbackground.png"
-  title: string= "Hoi UserName!"
+  @Input() title: string
   shouldShowMenu: boolean = false;
   menuState: boolean = false
+  @Input() hideMenu: boolean
   ngOnInit(): void {
   }
 

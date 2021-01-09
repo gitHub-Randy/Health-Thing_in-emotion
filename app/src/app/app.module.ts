@@ -1,6 +1,5 @@
 import { BrowserModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -20,9 +19,7 @@ import { StartComponent } from './components/onboarding/start/start.component';
 import { Onboarding1Component } from './components/onboarding/onboarding1/onboarding1.component';
 import { Onboarding2Component } from './components/onboarding/onboarding2/onboarding2.component';
 import { Onboarding3Component } from './components/onboarding/onboarding3/onboarding3.component';
-import { MenuComponent } from './components/menu/menu.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
-import { NavComponent } from './components/nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
@@ -37,6 +34,9 @@ import { HelpPopUp2Component } from './components/emotion-strengths/help-pop-up2
 import { HelpPopUp3Component } from './components/emotion-selection/help-pop-up3/help-pop-up3.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 
@@ -47,8 +47,6 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     EmotionStrengthsComponent,
     EmotionDescriptionComponent,
     HeaderComponent,
-    MenuComponent,
-    NavComponent,
     StartComponent,
     Onboarding1Component,
     Onboarding2Component,
@@ -58,6 +56,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     HelpPopUpComponent,
     HelpPopUp2Component,
     HelpPopUp3Component,
+    LoginComponent,
+    RegisterComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

@@ -8,11 +8,15 @@ import { Onboarding1Component } from './components/onboarding/onboarding1/onboar
 import { Onboarding2Component } from './components/onboarding/onboarding2/onboarding2.component';
 import { Onboarding3Component } from './components/onboarding/onboarding3/onboarding3.component';
 import { Onboarding4Component } from './components/onboarding/onboarding4/onboarding4.component';
+import { LoginComponent } from './components/login/login.component'
+import { RegisterComponent } from './components/register/register.component';
 
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/onboarding', pathMatch: 'full' },
+  { path: "login",  component:LoginComponent},
+  { path: "register",  component:RegisterComponent},
   { path: "emotions",  component:EmotionSelectionComponent},
   { path: "emotions/strengths",  component:EmotionStrengthsComponent},
   { path: "emotions/description",  component:EmotionDescriptionComponent},

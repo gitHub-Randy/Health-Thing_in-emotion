@@ -18,11 +18,11 @@ export class Onboarding4Component implements OnInit {
   }
 
   skip(){
-    this.router.navigateByUrl('emotions')
+    this.router.navigateByUrl('login')
   }
 
   nextpage(){
-    this.router.navigateByUrl('emotions');
+    this.router.navigateByUrl('login');
   }
 
   prevpage(){

@@ -1,0 +1,86 @@
+<app-header [title]="'Aanmelden'" [hideMenu]="true"></app-header>
+<div class="title">
+    <p class="a">VUL JOUW </p>
+    <p class="b">GEGEVENS IN</p>
+</div>
+<!-- <span class="title">VUL JOUW GEGEVENS IN</span> -->
+
+<div class="login">
+    <div class="loginForm">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <div class="label">
+                    <label for="name">Naam</label>
+                </div>
+                <mat-form-field class="full-width-input" floatLabel="never">
+                    <input placeholder="Jouw naam" matInput type="text" class="form-control" name="name"
+                        formControlName="name" required />
+                    <mat-error>
+                        Vul een naam in
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <div class="label">
+                    <label for="username">Gebruikersnaam</label><span> *</span>
+                </div>
+                <mat-form-field class="full-width-input" floatLabel="never">
+                    <input placeholder="Jouw gebruikersnaam" matInput type="text" class="form-control" name="username"
+                        formControlName="username" required />
+                    <mat-error>
+                        Vul een gebruikersnaam in
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <div class="label">
+                    <label for="name">E-mail adres</label>
+                </div>
+                <mat-form-field class="full-width-input" floatLabel="never">
+                    <input placeholder="voorbeeld@gmail.com" matInput type="email" class="form-control" name="email"
+                        formControlName="email" required />
+                    <mat-error>
+                        Vul een e-mail adres in
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <div class="label">
+                    <label for="name">Geboortedatum</label>
+                </div>
+                <mat-form-field class="full-width-input" floatLabel="never">
+                    <input placeholder="01-01-1998" matInput type="date" class="form-control" name="dob"
+                        formControlName="dob" required />
+                    <mat-error>
+                        Vul een geboortedatum in
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <div class="label">
+                    <label for="password">Wachtwoord</label><span> *</span>
+                </div>
+                <mat-form-field class="full-width-input" floatLabel="never">
+
+                    <div class="inputWrapper">
+
+                        <input matInput [type]="!hide ? 'password' : 'text'" class="form-control"
+                            placeholder="Wachtwoord" formControlName="password" required />
+                        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </div>
+                    <mat-error>
+                        vul een wachtwoord in
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <button type="submit" id="loginBtn" mat-raised-button>Inloggen</button>
+        </form>
+
+    </div>
+    <div class="register">
+        <label class="registerLabel">Heb je al een account?</label>
+        <a routerLink="/register" class="btn btn-link">Log in!</a>
+    </div>
+
+
+</div>

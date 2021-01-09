@@ -31,7 +31,7 @@ export class Onboarding1Component implements OnInit {
   }
 
   skip(){
-    this.router.navigateByUrl('emotions')
+    this.router.navigateByUrl('login')
   }
 
   nextpage(){
