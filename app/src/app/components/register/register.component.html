@@ -1,7 +1,6 @@
 <app-header [title]="'Aanmelden'" [hideMenu]="true"></app-header>
 <div class="title">
-    <p class="a">VUL JOUW </p>
-    <p class="b">GEGEVENS IN</p>
+    <span class="a">VUL JOUW </span>  <span class="b">GEGEVENS IN </span>
 </div>
 <!-- <span class="title">VUL JOUW GEGEVENS IN</span> -->
 
@@ -49,7 +48,7 @@
                     <label for="name">Geboortedatum</label>
                 </div>
                 <mat-form-field class="full-width-input" floatLabel="never">
-                    <input placeholder="01-01-1998" matInput type="date" class="form-control" name="dob"
+                    <input placeholder="01-01-1998" matInput type="date"  class="form-control" name="dob"
                         formControlName="dob" required />
                     <mat-error>
                         Vul een geboortedatum in
@@ -66,21 +65,26 @@
 
                         <input matInput [type]="!hide ? 'password' : 'text'" class="form-control"
                             placeholder="Wachtwoord" formControlName="password" required />
-                        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </div>
+                    <button class="iconBtn" mat-icon-button matSuffix (click)="hide = !hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+
+                    </button>
+
                     <mat-error>
                         vul een wachtwoord in
                     </mat-error>
                 </mat-form-field>
             </div>
-            <button type="submit" id="loginBtn" mat-raised-button>Inloggen</button>
+            <button type="submit" id="loginBtn" mat-raised-button>Aanmelden</button>
         </form>
 
     </div>
-    <div class="register">
-        <label class="registerLabel">Heb je al een account?</label>
-        <a routerLink="/register" class="btn btn-link">Log in!</a>
-    </div>
 
 
+
+</div>
+<div class="register">
+    <label class="registerLabel">Heb je al een account?</label>
+    <a routerLink="/register" class="btn btn-link">Log in!</a>
 </div>

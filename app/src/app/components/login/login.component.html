@@ -3,10 +3,11 @@
 <div class="login">
     <div class="loginForm">
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="label">
+                <label for="username">Gebruikersnaam</label><span class="requieredStar"> *</span>
+            </div>
             <div class="form-group">
-                <div class="label">
-                    <label for="username">Gebruikersnaam</label><span> *</span>
-                </div>
+
                 <mat-form-field class="full-width-input" floatLabel="never">
                     <input placeholder="Jouw gebruikersnaam" matInput type="text" class="form-control" name="username"
                         formControlName="username" required />
@@ -15,18 +16,22 @@
                     </mat-error>
                 </mat-form-field>
             </div>
+            <div class="label">
+                <label for="password">Wachtwoord</label><span class="requieredStar"> *</span>
+            </div>
             <div class="form-group">
-                <div class="label">
-                    <label for="password">Wachtwoord</label><span> *</span>
-                </div>
+
                 <mat-form-field class="full-width-input" floatLabel="never">
 
                     <div class="inputWrapper">
-
-                        <input matInput [type]="!hide ? 'password' : 'text'" class="form-control" placeholder="Wachtwoord"
-                            formControlName="password" required />
-                            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        <input matInput [type]="!hide ? 'password' : 'text'" class="form-control"
+                            placeholder="Wachtwoord" formControlName="password" required />
                     </div>
+                    <button class="iconBtn" mat-icon-button matSuffix (click)="hide = !hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+
+                    </button>
+
                     <mat-error>
                         vul een wachtwoord in
                     </mat-error>
@@ -38,8 +43,8 @@
     </div>
     <div class="register">
         <label class="registerLabel">Heb je nog geen account?</label>
-        <a   routerLink="/register" class="btn btn-link">Meld je aan!</a>
+        <a routerLink="/register" class="btn btn-link">Meld je aan!</a>
     </div>
-    
+
 
 </div>
