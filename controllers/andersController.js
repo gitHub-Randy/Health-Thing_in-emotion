@@ -20,6 +20,7 @@ module.exports = {
     data.forEach((newEmotion) => {
       let newAnders = new Anders({
         emotionName: newEmotion.emotionName,
+        userId: newEmotion.userId
       });
       newAnders
         .save()

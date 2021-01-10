@@ -12,6 +12,7 @@ import 'hammerjs';
 import { HelpPopUp2Component } from './help-pop-up2/help-pop-up2.component';
 import { EmotionService } from '../../services/emotion.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { TokenStorageService } from 'src/app/services/token-storage-service.service';
 
 
 
@@ -55,7 +56,7 @@ export class EmotionStrengthsComponent implements OnInit, AfterViewInit{
 
 
 
-  constructor(private router: Router, private description: MatDialog, private help: MatDialog, private help2: MatDialog, private EmotionService: EmotionService) {
+  constructor(private router: Router, private description: MatDialog, private help: MatDialog, private help2: MatDialog, private EmotionService: EmotionService, private tokenStorage: TokenStorageService) {
     const navigation = this.router.getCurrentNavigation();
     const state = navigation.extras.state as {chosenEmotions: choosenEmotions[]};
     this.chosenEmotions = state.chosenEmotions;
@@ -306,11 +307,12 @@ export class EmotionStrengthsComponent implements OnInit, AfterViewInit{
         strength: emotion.strength,
         description: emotion.description,
         gifUrl: emotion.gif,
+        
       }
       tempChosenEmotionArray.push(tempChosenEmotionIndex)
       tempChosenEmotionIndex = null
     })
-    this.EmotionService.addNewEmotion(tempChosenEmotionArray).subscribe(data => {
+    this.EmotionService.addNewEmotion({ emotionData: tempChosenEmotionArray, userId: this.tokenStorage.getUser().id }).subscribe(data => {
 
     });
   }

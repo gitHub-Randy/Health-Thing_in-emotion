@@ -16,6 +16,7 @@ import { AfterViewInit } from '@angular/core';
 import { HelpPopUp3Component } from './help-pop-up3/help-pop-up3.component'
 import { chipState } from 'src/app/interfaces/chipStates';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { TokenStorageService } from 'src/app/services/token-storage-service.service';
 @Component({
   selector: 'app-emotion-selection',
   templateUrl: './emotion-selection.component.html',
@@ -53,7 +54,7 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 export class EmotionSelectionComponent implements OnInit, AfterViewInit {
 
-  constructor(private gifService: GifServiceService, private ref: ChangeDetectorRef, private router: Router, private andersService: AndersService,private help: MatDialog, private snackbar: MatSnackBar) {
+  constructor(private gifService: GifServiceService, private ref: ChangeDetectorRef, private router: Router, private andersService: AndersService,private help: MatDialog, private snackbar: MatSnackBar, private tokenStorage: TokenStorageService) {
     if (this.chosenEmotions.length != 0){
     const navigation = this.router.getCurrentNavigation();
     const state = navigation.extras.state as {chosenEmotions: choosenEmotions[]};
@@ -149,14 +150,18 @@ export class EmotionSelectionComponent implements OnInit, AfterViewInit {
 
   fillAnders(): any {
     let emotionArray = [];
+    let userId = this.tokenStorage.getUser().id;
     return this.andersService.getAndersChipData().toPromise().then(data => {
       data.forEach(element => {
-        let temp = {
-          emotionName: element.emotionName,
-          keyword: element.emotionName,
-          chipState: chipState.NONE
-        };
-        emotionArray.push(temp)
+        if (element.userId == userId) {
+          let temp = {
+            emotionName: element.emotionName,
+            keyword: element.emotionName,
+            chipState: chipState.NONE
+          };
+          emotionArray.push(temp)
+        }
+       
       });
     }).then(data => {
       return emotionArray;
@@ -509,7 +514,7 @@ export class EmotionSelectionComponent implements OnInit, AfterViewInit {
 
   addToAnders(emotionName: string) {
 
-    this.andersService.addAndersChipData([{ emotionName: emotionName }]).toPromise().then(data => {
+    this.andersService.addAndersChipData([{ emotionName: emotionName, userId: this.tokenStorage.getUser().id }]).toPromise().then(data => {
       if (emotionName != '') {
         let temp = {
           emotionName: emotionName,
@@ -527,6 +532,9 @@ export class EmotionSelectionComponent implements OnInit, AfterViewInit {
   }
 
   saveAndersInDB() {
+    let tokenizedAnders = {
+      emotionName: this.newAnders
+    }
     let test = this.andersService.addAndersChipData(this.newAnders).subscribe(data => {
 
       this.router.navigate(['emotions/strengths'], { state: { chosenEmotions: this.chosenEmotions } });

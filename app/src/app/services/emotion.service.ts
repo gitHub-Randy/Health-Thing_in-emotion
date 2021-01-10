@@ -16,10 +16,10 @@ export class EmotionService {
 
   constructor(private http: HttpClient) { }
 
-  addNewEmotion(newEmotions: choosenEmotions[]): Observable<any> {
-    console.log(newEmotions);
+  addNewEmotion(newEmotionsData: any): Observable<any> {
+    console.log(newEmotionsData);
     
-    return this.http.post(`${API_URL}`,newEmotions, httpOptions)
+    return this.http.post(`${API_URL}`,newEmotionsData, httpOptions)
   }
 
 }

@@ -9,11 +9,12 @@ module.exports = {
     },
 
     create(req, res) {
-        console.log(req.body)
         let data = req.body;
+        console.log("data: ", data)
         let newEmotion = new ChosenEmotion({
 
-            chosenEmotions: data
+            chosenEmotions: data.emotionData,
+            userId: data.userId
         }).save().then(newChosenEmotions =>{
             console.log("New Emotion: " + newChosenEmotions);
 

@@ -3,7 +3,8 @@ const mongoose = require("mongoose");
 const Anders = mongoose.model(
   "Anders",
   new mongoose.Schema({
-      emotionName: String,
+    emotionName: String,
+    userId: String,
   })
 );
 
