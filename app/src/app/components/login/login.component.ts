@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { TokenStorageService } from 'src/app/services/token-storage-service.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   hide = false;
   constructor(private formBuilder: FormBuilder,
-    private router: Router) { }
+    private router: Router, private authService: AuthenticationService, private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -27,13 +29,27 @@ export class LoginComponent implements OnInit {
 
   }
 
- 
+
   onSubmit() {
-   
+
 
     console.log("username: ", this.form.value.username)
     console.log("password: ", this.form.value.password)
-
+    this.authService.login(this.form.value).toPromise().then(
+      data => {
+        this.tokenStorage.saveToken(data.accessToken);
+        console.log(data)
+        this.tokenStorage.saveUser(data);
+        this.router.navigateByUrl('/dashboard')
+        // this.isSuccessful = true;
+        // this.isSignUpFailed = false;
+      },
+      err => {
+        console.log(err)
+        // this.errorMessage = err.error.message;
+        // this.isSignUpFailed = true;
+      }
+    );
     // this.authenticationService.login(this.f.username.value, this.f.password.value)
     //   .pipe(first())
     //   .subscribe(

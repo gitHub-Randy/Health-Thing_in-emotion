@@ -34,7 +34,7 @@ db.mongoose.connection.on('error', (err) => {
 
 const anders = require('./routes/anders');
 const emotion = require('./routes/emotion');
-
+const auth = require('./routes/auth')
 
 
 app.use(cors(corsOptions));
@@ -56,6 +56,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/", anders);
 app.use("/", emotion);
+require('./routes/auth')(app);
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('*', (req, res) => {

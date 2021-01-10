@@ -11,16 +11,17 @@ import { Onboarding4Component } from './components/onboarding/onboarding4/onboar
 import { LoginComponent } from './components/login/login.component'
 import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import {  AuthGuard } from './guards/auth.guard'
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/onboarding', pathMatch: 'full' },
   { path: "login", component: LoginComponent },
-  { path: "dashboard",  component:DashboardComponent},
+  { path: "dashboard",  component:DashboardComponent , canActivate: [AuthGuard]},
   { path: "register",  component:RegisterComponent},
-  { path: "emotions",  component:EmotionSelectionComponent},
-  { path: "emotions/strengths",  component:EmotionStrengthsComponent},
-  { path: "emotions/description",  component:EmotionDescriptionComponent},
+  { path: "emotions",  component:EmotionSelectionComponent , canActivate: [AuthGuard]},
+  { path: "emotions/strengths",  component:EmotionStrengthsComponent , canActivate: [AuthGuard]},
+  { path: "emotions/description",  component:EmotionDescriptionComponent , canActivate: [AuthGuard]},
   { path: "onboarding",  component:StartComponent},
   { path: "onboarding/1",  component:Onboarding1Component},
   { path: "onboarding/2",  component:Onboarding2Component},

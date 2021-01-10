@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import {AuthenticationService } from '../../services/authentication.service'
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -9,14 +9,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
   form: FormGroup;
-  isLoggedIn = false;
-  loginInvalid = false;
+  isSuccessful = false;
+  isSignUpFailed = false;
   errorMessage = '';
-  roles: string[] = [];
 
   hide = false;
   constructor(private formBuilder: FormBuilder,
-    private router: Router) { }
+    private router: Router, private authService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -38,16 +37,18 @@ export class RegisterComponent implements OnInit {
     console.log("email: ", this.form.value.email)
     console.log("dob: ", this.form.value.dob)
 
-    // this.authenticationService.login(this.f.username.value, this.f.password.value)
-    //   .pipe(first())
-    //   .subscribe(
-    //     data => {
-    //       this.router.navigate([this.returnUrl]);
-    //     },
-    //     error => {
-    //       this.alertService.error(error);
-    //       this.loading = false;
-    //     });
+
+    this.authService.register(this.form.value).toPromise().then(
+      data => {
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
+        this.router.navigateByUrl('/login')
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+      }
+    );
   }
 
 
