@@ -10,6 +10,15 @@ export class DashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    let doc = document.getElementById('html');
+    doc.style.overflowY = "auto"
+
+    doc.style.backgroundImage = "url('../../../assets/header/headerbackground.png')";
+    doc.style.backgroundColor = "#E0F2F8"
   }
 
+
+  goToEmotion() {
+    
+  }
 }

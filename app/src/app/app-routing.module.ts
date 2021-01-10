@@ -10,12 +10,13 @@ import { Onboarding3Component } from './components/onboarding/onboarding3/onboar
 import { Onboarding4Component } from './components/onboarding/onboarding4/onboarding4.component';
 import { LoginComponent } from './components/login/login.component'
 import { RegisterComponent } from './components/register/register.component';
-
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/onboarding', pathMatch: 'full' },
-  { path: "login",  component:LoginComponent},
+  { path: "login", component: LoginComponent },
+  { path: "dashboard",  component:DashboardComponent},
   { path: "register",  component:RegisterComponent},
   { path: "emotions",  component:EmotionSelectionComponent},
   { path: "emotions/strengths",  component:EmotionStrengthsComponent},

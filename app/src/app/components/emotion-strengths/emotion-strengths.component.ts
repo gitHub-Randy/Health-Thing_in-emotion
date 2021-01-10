@@ -179,6 +179,7 @@ export class EmotionStrengthsComponent implements OnInit, AfterViewInit{
 
   next(){
     this.saveEmotions();
+    this.router.navigateByUrl('/dashboard')
   }
 
   showLeftButton(){
