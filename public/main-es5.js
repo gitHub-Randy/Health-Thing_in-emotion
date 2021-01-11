@@ -5537,6 +5537,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(RegisterComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
+          var doc = document.getElementById('html');
+          doc.style.overflowY = "scroll";
           this.form = this.formBuilder.group({
             name: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
             username: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],

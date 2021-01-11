@@ -2937,6 +2937,8 @@ class RegisterComponent {
         this.hide = false;
     }
     ngOnInit() {
+        let doc = document.getElementById('html');
+        doc.style.overflowY = "scroll";
         this.form = this.formBuilder.group({
             name: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
             username: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
