@@ -2,6 +2,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { TokenStorageService } from 'src/app/services/token-storage-service.service';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { map, shareReplay } from 'rxjs/operators';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  constructor(private breakpointObserver: BreakpointObserver, private tokenStorage: TokenStorageService) { }
 
   headerbackground: string = "headerbackground.png"
   @Input() title: string
@@ -19,6 +20,15 @@ export class HeaderComponent implements OnInit {
   menuState: boolean = false
   @Input() hideMenu: boolean
   ngOnInit(): void {
+    if (this.title === "Hoi") {
+      console.log(this.tokenStorage.getUser().name)
+      this.setTitle(`Hoi ${this.tokenStorage.getUser().name},`)
+    }
+    if (!this.hideMenu) {
+      // let doc = document.get("html")[0] as HTMLElement;
+      // doc.style.background-image: url(./assets//header/headerbackground.png);
+
+    }
   }
 
   

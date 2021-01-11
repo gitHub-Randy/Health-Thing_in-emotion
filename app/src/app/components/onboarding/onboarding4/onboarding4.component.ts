@@ -11,6 +11,8 @@ export class Onboarding4Component implements OnInit {
   constructor(private router:Router) { }
 
   ngOnInit(): void {
+    let doc = document.getElementById('html');
+    doc.style.overflowY = "hidden"
   }
 
   showInfo(){
@@ -18,11 +20,11 @@ export class Onboarding4Component implements OnInit {
   }
 
   skip(){
-    this.router.navigateByUrl('login')
+    this.router.navigateByUrl('dashboard')
   }
 
   nextpage(){
-    this.router.navigateByUrl('login');
+    this.router.navigateByUrl('dashboard');
   }
 
   prevpage(){

@@ -36,8 +36,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DashboardComponent } from '../app/components/dashboard/dashboard.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { AuthGuard } from './guards/auth.guard';
 
 
 
@@ -85,7 +86,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     ReactiveFormsModule,
     MatSnackBarModule
   ],
-  providers: [    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
+  providers: [    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}, AuthGuard,
 ],
   bootstrap: [AppComponent]
 })

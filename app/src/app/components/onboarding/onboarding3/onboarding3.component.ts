@@ -11,6 +11,8 @@ export class Onboarding3Component implements OnInit {
   constructor(private router:Router) { }
 
   ngOnInit(): void {
+    let doc = document.getElementById('html');
+    doc.style.overflowY = "hidden"
   }
 
   skip(){

@@ -1,4 +1,4 @@
-<app-header [title]="'Inloggen'" [hideMenu]="true"></app-header>
+<app-header [title]="'Inloggen'" [hideMenu]="false"></app-header>
 
 <div class="login">
     <div class="loginForm">
@@ -27,7 +27,7 @@
                         <input matInput [type]="!hide ? 'password' : 'text'" class="form-control"
                             placeholder="Wachtwoord" formControlName="password" required />
                     </div>
-                    <button class="iconBtn" mat-icon-button matSuffix (click)="hide = !hide">
+                    <button type="button" class="iconBtn" mat-icon-button matSuffix (click)="hide = !hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
 
                     </button>

@@ -21,10 +21,16 @@ export class LoginComponent implements OnInit {
     private router: Router, private authService: AuthenticationService, private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
+    console.log(this.authService.isAuthenticated())
     this.form = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
+
+    let doc = document.getElementById('html')
+    doc.style.backgroundImage = "url(./assets/header/headerbackground.png)";
+    console.log(doc)
+      // doc.style.backgroundImage =  "url(./assets/header/headerbackground.png);"
 
 
   }

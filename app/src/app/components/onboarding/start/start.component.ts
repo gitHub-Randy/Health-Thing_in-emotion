@@ -24,7 +24,7 @@ export class StartComponent implements OnInit{
   setbg() {
     let doc = document.getElementById('html')
     doc.style.backgroundImage = "none";
-
+    doc.style.overflowY = "hidden"
     let header = document.getElementById("headercontent");
     header.style.backgroundImage = "url('../../../assets/onboarding/header.png')";
     }

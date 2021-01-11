@@ -86,11 +86,13 @@ export class EmotionSelectionComponent implements OnInit, AfterViewInit {
 
   deleteOtherDisabled: boolean = true
 
+  currentUser: any;
   //#endregion
 
   //#region  init methods
 
   ngOnInit(): void {
+    this.currentUser = this.tokenStorage.getUser();
     this.currentCategory = {
       categoryName: POSSIBLE_CATEGROYS[0],
       possibleCategroyIndex: 0

@@ -27,6 +27,7 @@
   font-size: 30px;
   font-weight: 700;
   color: #403D46;
+  line-height: 1.2;
 }
 
 .headercontent button {
@@ -41,8 +42,10 @@
   color: white;
   position: absolute;
   top: 32%;
-  left: 17%;
+  left: 20%;
   padding-right: 15%;
+  width: 64vw;
+  line-height: 1.2;
 }
 
 button {
