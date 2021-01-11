@@ -19,6 +19,8 @@ export class RegisterComponent implements OnInit {
     private router: Router, private authService: AuthenticationService,private snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
+    let doc = document.getElementById('html')
+    doc.style.overflowY = "scroll"
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
       username: ['', Validators.required],
