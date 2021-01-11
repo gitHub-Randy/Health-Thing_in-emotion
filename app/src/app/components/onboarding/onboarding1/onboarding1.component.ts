@@ -33,7 +33,7 @@ export class Onboarding1Component implements OnInit {
   }
 
   skip(){
-    this.router.navigateByUrl('login')
+    this.router.navigateByUrl('dashboard')
   }
 
   nextpage(){

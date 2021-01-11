@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { TokenStorageService } from 'src/app/services/token-storage-service.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   hide = false;
   constructor(private formBuilder: FormBuilder,
-    private router: Router, private authService: AuthenticationService, private tokenStorage: TokenStorageService) { }
+    private router: Router, private authService: AuthenticationService, private tokenStorage: TokenStorageService,private snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
     console.log(this.authService.isAuthenticated())
@@ -36,6 +37,15 @@ export class LoginComponent implements OnInit {
   }
 
 
+  showSnackBar(message){
+    this.snackbar.open(message, "", {
+      duration: 1000,
+      panelClass: "snackbar"
+    });
+  }
+
+
+
   onSubmit() {
 
 
@@ -51,9 +61,9 @@ export class LoginComponent implements OnInit {
         // this.isSignUpFailed = false;
       },
       err => {
-        console.log(err)
-        // this.errorMessage = err.error.message;
-        // this.isSignUpFailed = true;
+        this.showSnackBar("De ingevoerde gegevens zijn ongeldig!")
+
+      
       }
     );
     // this.authenticationService.login(this.f.username.value, this.f.password.value)
