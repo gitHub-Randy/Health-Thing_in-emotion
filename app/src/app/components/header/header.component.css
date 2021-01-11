@@ -61,7 +61,7 @@ mat-sidenav {
  background-color: rgba(255, 255, 255, 0);
  border-style: none;
  width: 25px ;
- margin: 16px 37px 10px 0px;
+ margin: 16px 50px 10px 0px;
 
 }
 
@@ -97,7 +97,7 @@ mat-sidenav {
 #arrowRight{
   width: 11px;
   height: 16px;
-  margin: 12px 45px 10px 0px;
+  margin: 12px 58px 10px 0px;
   color: #403D46;
 
 }
@@ -120,4 +120,26 @@ mat-sidenav {
   position: sticky;
   top: 0;
   z-index: 1;
+}
+
+
+::ng-deep .snackbar{
+  background-color: white;  
+}
+
+::ng-deep .mat-simple-snackbar{
+  text-transform: capitalize;
+  font-family: "poppins";
+  font-weight: 500;
+  font-size: 16px;
+  color: #403D46;
+}
+
+::ng-deep .mat-snack-bar-handset .mat-snack-bar-container {
+  width: auto !important;
+  display: flex;
+  justify-content: center;
+  margin: auto auto 26% auto !important;
+  border-radius: 18px !important;
+
 }

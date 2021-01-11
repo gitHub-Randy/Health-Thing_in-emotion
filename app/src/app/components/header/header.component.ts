@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { TokenStorageService } from 'src/app/services/token-storage-service.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { TokenStorageService } from 'src/app/services/token-storage-service.serv
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private breakpointObserver: BreakpointObserver, private tokenStorage: TokenStorageService) { }
+  constructor(private breakpointObserver: BreakpointObserver, private tokenStorage: TokenStorageService,private snackbar: MatSnackBar) { }
 
   headerbackground: string = "headerbackground.png"
   @Input() title: string
@@ -53,5 +54,12 @@ export class HeaderComponent implements OnInit {
   setTitle(t){
     this.title = t;
   }
+
+ comingSoon(){
+    this.snackbar.open("Coming soon", "", {
+      duration: 1000,
+      panelClass: "snackbar"
+    });
+ }
 
 }
