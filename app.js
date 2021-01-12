@@ -34,7 +34,8 @@ db.mongoose.connection.on('error', (err) => {
 
 const anders = require('./routes/anders');
 const emotion = require('./routes/emotion');
-const auth = require('./routes/auth')
+const auth = require('./routes/auth');
+const goals = require('./routes/goals');
 
 
 app.use(cors(corsOptions));
@@ -56,6 +57,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/", anders);
 app.use("/", emotion);
+app.use("/", goals);
 require('./routes/auth')(app);
 
 

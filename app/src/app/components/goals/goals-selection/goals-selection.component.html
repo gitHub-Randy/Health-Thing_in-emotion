@@ -1,0 +1,33 @@
+<app-header [title]="'Stel jouw maandelijkse doel'"></app-header>
+<div class="page">
+    <div class="tekst">
+        <h3>AAN WELK GEVOEL WIL JIJ <br> WERKEN?</h3>
+    </div>
+    <div class="selection">
+        <div class="cardheader">
+            <p>JOUW GEVOELENS</p>
+        </div>
+        <div class="chipDiv">
+            <div class="flexContainer">
+                <div class="flexItems">
+                    <mat-chip *ngFor="let a of filteredArray; index as i" >
+                        {{a.emotionName}}
+                    </mat-chip>
+                    <mat-chip class="add">
+                        <mat-icon>add</mat-icon>
+                    </mat-chip>
+                </div>
+            </div>
+        </div>  
+    </div>
+    <div class="skip">
+        <p>Ik wil nu niet aan mijn <br> gevoel werken</p>
+        <button class="skipbutton">OVERSLAAN</button>
+    </div>
+    <div class="bottom-bar">
+        <div class="next">
+            <button mat-fab class="nextButton"><img src="../../../assets/icons/next.png"></button> 
+            <p>Volgende</p>
+        </div>
+    </div>
+</div>

@@ -12,6 +12,7 @@ import { LoginComponent } from './components/login/login.component'
 import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {  AuthGuard } from './guards/auth.guard'
+import { GoalsSelectionComponent } from './components/goals/goals-selection/goals-selection.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: "emotions",  component:EmotionSelectionComponent , canActivate: [AuthGuard]},
   { path: "emotions/strengths",  component:EmotionStrengthsComponent , canActivate: [AuthGuard]},
   { path: "emotions/description",  component:EmotionDescriptionComponent , canActivate: [AuthGuard]},
+  { path: "goals",  component:GoalsSelectionComponent},
   { path: "onboarding",  component:StartComponent},
   { path: "onboarding/1",  component:Onboarding1Component},
   { path: "onboarding/2",  component:Onboarding2Component},
