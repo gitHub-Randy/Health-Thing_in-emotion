@@ -1,5 +1,6 @@
-<app-header [title]="'Stel jouw maandelijkse doel'"></app-header>
+
 <div class="page">
+    <app-header [title]="'Stel jouw maandelijkse doel'"></app-header>
     <div class="tekst">
         <h3>AAN WELK GEVOEL WIL JIJ <br> WERKEN?</h3>
     </div>
@@ -10,12 +11,17 @@
         <div class="chipDiv">
             <div class="flexContainer">
                 <div class="flexItems">
-                    <mat-chip *ngFor="let a of filteredArray; index as i" >
-                        {{a.emotionName}}
-                    </mat-chip>
-                    <mat-chip class="add">
-                        <mat-icon>add</mat-icon>
-                    </mat-chip>
+                    <mat-chip-list multiple [selectable]="true">
+                        <mat-chip *ngFor="let a of filteredArray; index as i" >
+                            {{a.emotionName}}
+                        </mat-chip>
+                        <mat-chip>
+                            EENZAAM
+                        </mat-chip>
+                        <mat-chip class="add">
+                            <mat-icon>add</mat-icon>
+                        </mat-chip>
+                    </mat-chip-list>
                 </div>
             </div>
         </div>  
@@ -26,7 +32,7 @@
     </div>
     <div class="bottom-bar">
         <div class="next">
-            <button mat-fab class="nextButton"><img src="../../../assets/icons/next.png"></button> 
+            <button mat-fab class="nextButton" (click)="nextPage()" ><img src="../../../assets/icons/next.png"></button> 
             <p>Volgende</p>
         </div>
     </div>

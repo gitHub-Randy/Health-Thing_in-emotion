@@ -4,6 +4,7 @@ import { HeaderComponent } from '../../header/header.component';
 import { HelpPopUp4Component } from './help-pop-up4/help-pop-up4.component';
 import { EmotionService } from 'src/app/services/emotion.service';
 import { TokenStorageService } from 'src/app/services/token-storage-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-goals-selection',
@@ -16,7 +17,7 @@ export class GoalsSelectionComponent implements OnInit, AfterViewInit {
 
   filteredArray = [];
 
-  constructor(private emotionService: EmotionService, private tokenStorage: TokenStorageService ,private help4: MatDialog) { }
+  constructor(private emotionService: EmotionService, private tokenStorage: TokenStorageService , private router: Router, private help4: MatDialog) { }
 
   ngAfterViewInit(): void {
     this.setT();
@@ -59,6 +60,9 @@ export class GoalsSelectionComponent implements OnInit, AfterViewInit {
     })
   }
 
+  nextPage(){
+    this.router.navigate(['goals/edit']);
+  }
 
   setbg() {
     let doc = document.getElementById('html');
@@ -71,8 +75,9 @@ export class GoalsSelectionComponent implements OnInit, AfterViewInit {
   setT(){
     this.childComponent.setTitle("Stel jouw maandelijkse doel");
     let t = document.getElementById('center');
+    console.log(t);
     t.style.marginTop = "8%";
-  }
+  }  
 
   showHelp4(){
     this.help4.open(HelpPopUp4Component, {

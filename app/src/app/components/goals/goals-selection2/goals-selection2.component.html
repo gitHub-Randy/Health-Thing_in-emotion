@@ -1,0 +1,38 @@
+<app-header [title]="'Stel jouw maandelijkse doel'"></app-header>
+<div class="page">
+    <div class="tekst">
+        <h3>WELKE DOELEN WIL JIJ <br> BEREIKEN?</h3>
+    </div>
+    <div class="selection">
+        <div class="cardheader">
+            <p>EENZAAM</p>
+        </div>  
+        <div class="listDiv"> 
+            <ul class="goals">
+                <li>
+                    <input class="customGoal" placeholder="Typ hier je eigen doel...">
+                </li>
+                <li>
+                    <button>Leer nieuwe mensen kennen</button>
+                </li>
+                <li>
+                    <button>Maak nieuwe vrienden</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="info">
+        <p>Meer informatie?</p>
+        <button mat-fab class="infobutton" (click)="showInfo()" >i</button>
+    </div>
+    <div class="bottom-bar">
+        <div class="prev">
+            <button mat-fab class="prevButton" (click)="prevpage()"><img src="../../../assets/icons/prev.png"></button> 
+            <p>Vorige</p>
+        </div>
+        <div class="next">
+            <button mat-fab class="nextButton" ><img src="../../../assets/icons/next.png"></button> 
+            <p>Volgende</p>
+        </div>
+    </div>
+</div>

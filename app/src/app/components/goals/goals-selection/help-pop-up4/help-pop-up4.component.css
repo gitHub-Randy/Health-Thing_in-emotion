@@ -1,3 +1,18 @@
+/* help pop-up 4*/
+::ng-deep .help-panel4 {
+    margin-top: 10% !important;
+}
+
+::ng-deep .help-panel4 .mat-dialog-container{
+  border-radius: 18px;
+  padding: 12px 12px 20px 12px;
+  overflow-y: hidden;
+}
+
+::ng-deep  .backdropBackground4{
+  background-color: rgba(0,0,0,.50);
+} 
+
 .content{
     display: flex;
     flex-direction: column;
