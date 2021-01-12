@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class Onboarding4Component implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,private snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
     let doc = document.getElementById('html');
@@ -16,7 +17,10 @@ export class Onboarding4Component implements OnInit {
   }
 
   showInfo(){
-   
+    this.snackbar.open("Coming soon", "", {
+      duration: 1000,
+      panelClass: "snackbar"
+    });
   }
 
   skip(){
