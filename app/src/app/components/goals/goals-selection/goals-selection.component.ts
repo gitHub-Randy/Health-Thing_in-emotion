@@ -5,6 +5,8 @@ import { HelpPopUp4Component } from './help-pop-up4/help-pop-up4.component';
 import { EmotionService } from 'src/app/services/emotion.service';
 import { TokenStorageService } from 'src/app/services/token-storage-service.service';
 import { Router } from '@angular/router';
+import { NONE_TYPE } from '@angular/compiler';
+import { chipState } from 'src/app/interfaces/chipStates';
 
 @Component({
   selector: 'app-goals-selection',
@@ -40,7 +42,8 @@ export class GoalsSelectionComponent implements OnInit, AfterViewInit {
         if(e.userId == userId) {
             for(let i = 0; i < e.chosenEmotions.length; i++) {
           let temp ={
-            emotionName: e.chosenEmotions[i].emotionName
+            emotionName: e.chosenEmotions[i].emotionName,
+            emotionState: chipState.NONE
           };
           emotionArray.push(temp);
             }
@@ -53,11 +56,41 @@ export class GoalsSelectionComponent implements OnInit, AfterViewInit {
           }
         }, []);
         }
+        this.addLonelyTest();
       });
     }).then(data => {
       console.log("filtered array: ", this.filteredArray );
       return this.filteredArray;
     })
+  }
+
+  addLonelyTest(){
+    let lonely = {
+      emotionName: "EENZAAM",
+      emotionState: chipState.NONE
+    }
+    this.filteredArray.push(lonely);
+  }
+
+  selectChip(chip: HTMLElement){
+    if(this.filteredArray[chip.id].emotionState == chipState.NONE) {
+      chip.style.backgroundColor = "#AB5057";
+      chip.style.color = "white";
+      this.filteredArray[chip.id].emotionState = chipState.SELECTED;
+    } else {
+      chip.style.backgroundColor = "white";
+      chip.style.color = "#403D46";
+      this.filteredArray[chip.id].emotionState = chipState.NONE;
+    }
+  }
+
+  addEmotion(){
+    this.router.navigate(['emotions']);
+
+  }
+
+  skip(){
+    this.router.navigate(['dashboard']);
   }
 
   nextPage(){
@@ -74,9 +107,6 @@ export class GoalsSelectionComponent implements OnInit, AfterViewInit {
 
   setT(){
     this.childComponent.setTitle("Stel jouw maandelijkse doel");
-    let t = document.getElementById('center');
-    console.log(t);
-    t.style.marginTop = "8%";
   }  
 
   showHelp4(){

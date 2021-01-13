@@ -12,13 +12,10 @@
             <div class="flexContainer">
                 <div class="flexItems">
                     <mat-chip-list multiple [selectable]="true">
-                        <mat-chip *ngFor="let a of filteredArray; index as i" >
+                        <mat-chip *ngFor="let a of filteredArray; index as i" id="{{i}}" (click)="selectChip($event.target)" >
                             {{a.emotionName}}
                         </mat-chip>
-                        <mat-chip>
-                            EENZAAM
-                        </mat-chip>
-                        <mat-chip class="add">
+                        <mat-chip class="add" (click)="addEmotion()">
                             <mat-icon>add</mat-icon>
                         </mat-chip>
                     </mat-chip-list>
@@ -28,7 +25,7 @@
     </div>
     <div class="skip">
         <p>Ik wil nu niet aan mijn <br> gevoel werken</p>
-        <button class="skipbutton">OVERSLAAN</button>
+        <button class="skipbutton" (click)="skip()" >OVERSLAAN</button>
     </div>
     <div class="bottom-bar">
         <div class="next">

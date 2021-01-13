@@ -10,13 +10,10 @@
         <div class="listDiv"> 
             <ul class="goals">
                 <li>
-                    <input class="customGoal" placeholder="Typ hier je eigen doel...">
+                    <input class="customGoal" placeholder="Typ hier je eigen doel..." (change)="addOwnGoals($event.target.value)" >
                 </li>
-                <li>
-                    <button>Leer nieuwe mensen kennen</button>
-                </li>
-                <li>
-                    <button>Maak nieuwe vrienden</button>
+                <li *ngFor="let goal of goals; index as i" id="{{i}}">
+                    <button  id="{{i}}" (click)="selectGoals($event.target)" >{{goal.goalName}}</button>
                 </li>
             </ul>
         </div>

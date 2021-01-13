@@ -14,4 +14,4 @@ const Goals = mongoose.model(
   })
 );
 
-module.exports = Anders;
+module.exports = Goals;
