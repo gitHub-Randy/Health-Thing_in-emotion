@@ -14,6 +14,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {  AuthGuard } from './guards/auth.guard'
 import { GoalsSelectionComponent } from './components/goals/goals-selection/goals-selection.component';
 import { GoalsSelection2Component } from './components/goals/goals-selection2/goals-selection2.component';
+import { GoalsOverviewComponent } from './components/goals/goals-overview/goals-overview.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: "emotions/description",  component:EmotionDescriptionComponent , canActivate: [AuthGuard]},
   { path: "goals",  component:GoalsSelectionComponent},
   { path: "goals/edit",  component:GoalsSelection2Component},
+  { path: "goals/overview",  component:GoalsOverviewComponent},
   { path: "onboarding",  component:StartComponent},
   { path: "onboarding/1",  component:Onboarding1Component},
   { path: "onboarding/2",  component:Onboarding2Component},

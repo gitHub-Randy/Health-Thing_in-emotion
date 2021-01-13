@@ -1,1 +1,20 @@
-<p>goals-overview works!</p>
+<div class="page">
+    <app-header [title]="'Jouw doelen'"></app-header>
+    <div class="tekst">
+        <h1>4/12</h1>
+        <h3> Doelen Behaald </h3>
+    </div>
+    <div class="listDiv"> 
+        <ul class="goals">
+            <li *ngFor="let goal of goals; index as i" id="{{i}}">
+               <span>{{goal.goalName}}</span>
+            </li>
+        </ul>
+    </div>
+    <div class="add">
+        <button mat-fab class="addButton">
+            <mat-icon>add</mat-icon>
+        </button>
+        <p>Doel aanmaken</p>
+    </div>
+</div>
