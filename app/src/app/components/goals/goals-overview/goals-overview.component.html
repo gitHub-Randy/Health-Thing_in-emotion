@@ -1,13 +1,25 @@
 <div class="page">
     <app-header [title]="'Jouw doelen'"></app-header>
     <div class="tekst">
-        <h1>4/12</h1>
+        <h1>{{finishedGoals}}/{{goals.length}}</h1>
         <h3> Doelen Behaald </h3>
     </div>
     <div class="listDiv"> 
         <ul class="goals">
             <li *ngFor="let goal of goals; index as i" id="{{i}}">
-               <span>{{goal.goalName}}</span>
+                <div class="item"> 
+                    <div class="goalName">
+                        {{goal.goalName}}
+                        <div *ngIf="goal.goalFinished === true" class="finishedGoal">
+                            <p class="done">Doel behaald!</p>
+                            <mat-icon>done</mat-icon>
+                        </div>
+                    </div>
+                    <div *ngIf="goal.goalFinished === false" class="progress">
+                        <mat-progress-bar mode="determinate" value="{{progress[i]}}"></mat-progress-bar>
+                        <p>{{goal.actionsFinished}} van de {{goal.actions}} acties behaald</p>
+                    </div>
+                </div>
             </li>
         </ul>
     </div>

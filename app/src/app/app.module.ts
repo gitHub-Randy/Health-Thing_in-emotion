@@ -43,7 +43,7 @@ import { GoalsSelectionComponent } from './components/goals/goals-selection/goal
 import { GoalsOverviewComponent } from './components/goals/goals-overview/goals-overview.component';
 import { HelpPopUp4Component } from './components/goals/goals-selection/help-pop-up4/help-pop-up4.component';
 import { GoalsSelection2Component } from './components/goals/goals-selection2/goals-selection2.component';
-
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 @NgModule({
@@ -92,7 +92,8 @@ import { GoalsSelection2Component } from './components/goals/goals-selection2/go
     MatCheckboxModule,
     FormsModule,
     ReactiveFormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressBarModule
   ],
   providers: [    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}, AuthGuard,
 ],

@@ -58,7 +58,7 @@ export class GoalsSelection2Component implements OnInit, AfterViewInit {
     if(this.goals[button.id].goalState == chipState.NONE){
        button.style.boxShadow = " 0 0 0 6px #D5A7AA";
        this.goals[button.id].goalState = chipState.SELECTED;
-       console.log("selected",this.goals);
+       console.log("selected",this.goals[button.id]);
      } else {
        console.log("not selected",this.goals);
        button.style.boxShadow = "none";

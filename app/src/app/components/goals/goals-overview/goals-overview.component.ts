@@ -8,13 +8,16 @@ import { Component, OnInit } from '@angular/core';
 export class GoalsOverviewComponent implements OnInit {
 
   goals = [];
-
+  progress = [];
+  finishedGoals = 0;
 
   constructor() { }
 
   ngOnInit(): void {
     this.setbg();
     this.addGoals();
+    this.getProgress();
+    this.countFinishedGoals();
   }
 
   setbg() {
@@ -28,12 +31,42 @@ export class GoalsOverviewComponent implements OnInit {
     addGoals(){
     let temp1  = {
       goalName: "Leer nieuwe mensen kennen",
+      goalFinished: false,
+      actions: 4,
+      actionsFinished: 2
     }
     let temp2  = {
       goalName: "Maak nieuwe vrienden",
+      goalFinished: false,
+      actions: 4,
+      actionsFinished: 3
     }
-    this.goals.push(temp1, temp2);
+    let temp3  = {
+      goalName: "Leer nieuwe mensen kennen",
+      goalFinished: true,
+      actions: 4,
+      actionsFinished: 4
+    }
+    this.goals.push(temp1, temp2, temp3);
     console.log(this.goals);
   } 
+
+  getProgress(){
+    for(let i = 0; i < this.goals.length; i++){
+      let value = this.goals[i].actionsFinished / this.goals[i].actions * 100;
+      console.log(value);
+      this.progress.push(value);
+      console.log(this.progress);
+    }
+  }
+
+  countFinishedGoals(){
+    for(let i = 0; i < this.goals.length; i++){
+      if(this.goals[i].goalFinished == true){
+        this.finishedGoals += 1;
+        console.log("finishedGoals: ",this.finishedGoals);
+      }
+    }
+  }
 
 }

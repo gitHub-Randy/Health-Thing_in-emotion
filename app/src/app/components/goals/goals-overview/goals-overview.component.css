@@ -28,13 +28,12 @@
 
  .listDiv {
     background-color: white; /*  f7f7f7 */
-    margin: 8% auto -2% auto;
+    margin: 8% auto auto auto;
     display: flex;
     flex-direction: column;
     border-radius: 18px;
     width: 90%;
     /* height: 21vh; */
-    padding-bottom: 2%;
     box-shadow: 0 5px 60px 0px rgba(0, 0, 0, 0.2); 
   }
 
@@ -44,33 +43,87 @@
       margin: 0;
   }
 
-  .goals li {
-    background-color:#f7f7f7;
+   .goals li {
+    /* background-color:#f7f7f7;
     border-radius: 18px;
     text-align: center;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 500; */
     margin: 5% 3% 5% 3%;
-    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.20);
-    padding: 7% 0 7% 0;
+    /* box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.20);
+    padding: 7% 0 7% 0; */
 
+  } 
+
+  .item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
-  .goals li span{
-      margin: auto;
-      border: none;
-      background-color: transparent;
+  .goalName{
+      margin: auto auto 5% auto;
+      background-color:#f7f7f7;
+      box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.20);
       font-family: "poppins";
       font-size: 18px;
       font-weight: bold;
       text-transform: uppercase;
       border-radius: 18px;
       width: 100%;
+      padding: 7% 0 7% 0;
+      text-align: center;
+  }
+
+  .finishedGoal{
+    color: #C48489;
+    text-transform: none;
+    display: flex;
+    align-items: center;
+  }
+
+  .done{
+    font-size: 18px !important;
+    font-weight: bold !important;
+    margin: 0 0 0 25% !important;
+  }
+
+  .finishedGoal mat-icon{
+    margin: 0;
+  }
+
+  .progress{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+   .mat-progress-bar{
+    width: 90%;
+    height: 8px;
+    border-radius: 4px;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.20);
+
+  }
+
+  ::ng-deep .mat-progress-bar-buffer{
+    background-color: white;
+  }
+  ::ng-deep .mat-progress-bar-fill::after{
+    background-color: #C48489 !important;
+  }
+
+  .goals li p{
+    font-family: "poppins";
+    font-size: 12px;
+    font-weight: 500;
+    margin: auto;
   }
 
   .add{
      text-align: center;
-     margin: 20% auto auto auto;
+     margin: 10% auto auto auto;
   }
 
   .addButton{
