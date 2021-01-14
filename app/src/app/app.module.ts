@@ -43,6 +43,9 @@ import { GoalsSelectionComponent } from './components/goals/goals-selection/goal
 import { GoalsOverviewComponent } from './components/goals/goals-overview/goals-overview.component';
 import { HelpPopUp4Component } from './components/goals/goals-selection/help-pop-up4/help-pop-up4.component';
 import { GoalsSelection2Component } from './components/goals/goals-selection2/goals-selection2.component';
+import { ActionReadComponent } from './components/actions/read/actionRead.component';
+import { ActionCreateComponent } from './components/actions/create/actionCreate.component';
+import { ActionUpdateComponent } from './components/actions/update/actionUpdate.component';
 
 
 
@@ -69,6 +72,9 @@ import { GoalsSelection2Component } from './components/goals/goals-selection2/go
     GoalsOverviewComponent,
     HelpPopUp4Component,
     GoalsSelection2Component,
+    ActionReadComponent,
+    ActionCreateComponent,
+    ActionUpdateComponent,
   ],
   imports: [
     BrowserModule,

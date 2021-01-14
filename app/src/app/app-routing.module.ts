@@ -14,6 +14,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {  AuthGuard } from './guards/auth.guard'
 import { GoalsSelectionComponent } from './components/goals/goals-selection/goals-selection.component';
 import { GoalsSelection2Component } from './components/goals/goals-selection2/goals-selection2.component';
+import { ActionCreateComponent } from './components/actions/create/actionCreate.component'
+import { ActionReadComponent } from './components/actions/read/actionRead.component'
+import { ActionUpdateComponent } from './components/actions/update/actionUpdate.component'
 
 
 const routes: Routes = [
@@ -25,7 +28,10 @@ const routes: Routes = [
   { path: "emotions/strengths",  component:EmotionStrengthsComponent , canActivate: [AuthGuard]},
   { path: "emotions/description",  component:EmotionDescriptionComponent , canActivate: [AuthGuard]},
   { path: "goals",  component:GoalsSelectionComponent},
-  { path: "goals/edit",  component:GoalsSelection2Component},
+  { path: "goals/edit", component: GoalsSelection2Component },
+  { path: "actions/read",  component:ActionReadComponent},
+  { path: "actions/create", component: ActionCreateComponent },
+  { path: "actions/update",  component:ActionUpdateComponent},
   { path: "onboarding",  component:StartComponent},
   { path: "onboarding/1",  component:Onboarding1Component},
   { path: "onboarding/2",  component:Onboarding2Component},

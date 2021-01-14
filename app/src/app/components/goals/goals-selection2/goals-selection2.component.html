@@ -28,7 +28,8 @@
             <p>Vorige</p>
         </div>
         <div class="next">
-            <button mat-fab class="nextButton" ><img src="../../../assets/icons/next.png"></button> 
+            <button *ngIf="selectedGoals == 0" mat-fab class="nextButton" style="background-color: #F3AEB3;" (click)="nextPage()" ><img src="../../../assets/icons/next.png"></button> 
+            <button *ngIf="selectedGoals > 0" mat-fab class="nextButton" (click)="nextPage()" ><img src="../../../assets/icons/next.png"></button> 
             <p>Volgende</p>
         </div>
     </div>

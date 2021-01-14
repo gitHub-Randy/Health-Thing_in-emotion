@@ -1,0 +1,56 @@
+<app-header [title]="'Kies jouw acties'"></app-header>
+<div class="page">
+    <div class="tekst">
+        <h3>Welke acties kies jij?</h3>
+    </div>
+    <div class="carrousel">
+        <button mat-icon-button (click)="startAnimation('slideRight')" id="leftBtn" [disabled]="goals.length <= 1">
+            <mat-icon id="categoryArrow">keyboard_arrow_left</mat-icon>
+        </button> 
+        <div class="card" [@emotionTrigger]="animationState" (@emotionTrigger.done)="resetAnimationState()"
+        (swipeRight)="startAnimation('slideRight')" (swipeLeft)="startAnimation('slideLeft')">
+        <div class="cardheader">
+            <p>{{goals[currentIndex].goalName}}</p>
+        </div>  
+        <div class="listDiv"> 
+            <ul class="actions">
+                <li>
+                    <input class="customAction" placeholder="Typ hier je eigen actie..." (change)="addOwnAction($event.target.value)" >
+                </li>
+                <li *ngFor="let action of goals[currentIndex].actions; index as i" id="{{i}}">
+                    <button  id="{{i}}" (click)="selectAction($event.target)" >{{action.actionName}}</button>
+                </li>
+            </ul>
+        </div>
+        <!-- <div class="selection" *ngFor="let goal of goals">
+         
+        </div> -->
+        </div>
+        <button mat-icon-button (click)="startAnimation('slideLeft')" id="rightBtn" [disabled]="goals.length <= 1">
+            <mat-icon id="categoryArrow">keyboard_arrow_right</mat-icon>
+        </button>
+    </div>
+    <div class="swipeControls" id="swipeControls">
+        <mat-icon id="swipeCircle" style="color:#8AC8A8; background-color: #8AC8A8;" (click)="goToIndex(0)">lens</mat-icon>
+        <ng-container *ngFor="let i of goals; index as x">
+            <mat-icon *ngIf="x > 0"  id="swipeCircle" style="color: #FFFFFF; background-color: #FFFFFF;" (click)="goToIndex(x)">lens</mat-icon>
+        </ng-container>
+    </div>
+   
+    <div class="info">
+        <p>Meer informatie?</p>
+        <button mat-fab class="infobutton" (click)="showInfo()" >i</button>
+    </div>
+    <div class="bottom-bar">
+        <div class="prev">
+            <button mat-fab class="prevButton" (click)="prevPage()"><img src="../../../assets/icons/prev.png"></button> 
+            <p>Vorige</p>
+        </div>
+        <div class="next">
+            <button *ngIf="selectedAction == 0" mat-fab class="nextButton" style="background-color: #BADECB ;" (click)="nextPage()" ><img src="../../../assets/icons/next.png"></button> 
+
+            <button *ngIf="selectedAction > 0" mat-fab class="nextButton" (click)="nextPage()" ><img src="../../../assets/icons/next.png"></button> 
+            <p>Volgende</p>
+        </div>
+    </div>
+</div>

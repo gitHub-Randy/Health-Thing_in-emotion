@@ -17,6 +17,8 @@ export class GoalsSelection2Component implements OnInit, AfterViewInit {
 
   goals = [];
   toggle = false;
+  selectedGoals = 0;
+
 
   constructor(private router: Router, private help4: MatDialog) { }
 
@@ -54,16 +56,19 @@ export class GoalsSelection2Component implements OnInit, AfterViewInit {
   }
 
   selectGoals(button: HTMLElement){
-    console.log(button.id);
     if(this.goals[button.id].goalState == chipState.NONE){
        button.style.boxShadow = " 0 0 0 6px #D5A7AA";
        this.goals[button.id].goalState = chipState.SELECTED;
-       console.log("selected",this.goals);
+      console.log("selected", this.goals);
+      this.selectedGoals += 1;
      } else {
        console.log("not selected",this.goals);
        button.style.boxShadow = "none";
-       this.goals[button.id].goalState = chipState.NONE;
-     };
+      this.goals[button.id].goalState = chipState.NONE;
+      this.selectedGoals -= 1;
+
+    };
+    console.log(this.selectedGoals)
   }
 
   showInfo(){
@@ -87,11 +92,23 @@ export class GoalsSelection2Component implements OnInit, AfterViewInit {
 
     doc.style.backgroundImage = "url('../../../assets/header/headerbackgroundRed.png')";
     doc.style.backgroundColor = "#fbe2e4"
+    let center = document.getElementById('center');
+    center.style.marginTop = "8%"
   }
 
   setT(){
     this.childComponent.setTitle("Stel jouw maandelijkse doel");
   }
 
+  nextPage() {
+    let selectedGoals = [];
+    this.goals.forEach(goal => {
+      if (goal.goalState == chipState.SELECTED) {
+        selectedGoals.push(goal)
+      }
+    })
+    this.router.navigateByUrl('/actions/create', { state: { goals: selectedGoals } });
+
+  }
   
 }
