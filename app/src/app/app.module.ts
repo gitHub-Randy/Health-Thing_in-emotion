@@ -39,6 +39,10 @@ import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from '../app/components/dashboard/dashboard.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { AuthGuard } from './guards/auth.guard';
+import { GoalsSelectionComponent } from './components/goals/goals-selection/goals-selection.component';
+import { GoalsOverviewComponent } from './components/goals/goals-overview/goals-overview.component';
+import { HelpPopUp4Component } from './components/goals/goals-selection/help-pop-up4/help-pop-up4.component';
+import { GoalsSelection2Component } from './components/goals/goals-selection2/goals-selection2.component';
 
 
 
@@ -61,6 +65,10 @@ import { AuthGuard } from './guards/auth.guard';
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
+    GoalsSelectionComponent,
+    GoalsOverviewComponent,
+    HelpPopUp4Component,
+    GoalsSelection2Component,
   ],
   imports: [
     BrowserModule,

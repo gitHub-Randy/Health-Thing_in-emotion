@@ -22,4 +22,9 @@ export class EmotionService {
     return this.http.post(`${API_URL}`,newEmotionsData, httpOptions)
   }
 
+  getEmotions(): Observable<any> {
+    return this.http.get(API_URL, httpOptions);
+  }
+
+
 }
