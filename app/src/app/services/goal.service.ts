@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from "../../environments/environment";
-import { Goal } from '../interfaces/goal';
-const API_URL = `${environment.apiUrl}/emotion/goals`;
+import { chipState } from '../interfaces/chipStates';
+const API_URL = `${environment.apiUrl}/goals`;
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -14,10 +14,10 @@ export class GoalService {
 
   constructor(private http: HttpClient) { }
 
-  addGoalData(goal: Goal[]): Observable<any>{
-    console.log(goal)
+  addGoalData(goals: any): Observable<any>{
+    console.log(goals)
 
-    return this.http.post(`${API_URL}`,goal, httpOptions)
+    return this.http.post(`${API_URL}`,goals, httpOptions)
 
   }
 
