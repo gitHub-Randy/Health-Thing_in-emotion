@@ -17,6 +17,7 @@ import { GoalsSelection2Component } from './components/goals/goals-selection2/go
 import { ActionCreateComponent } from './components/actions/create/actionCreate.component'
 import { ActionReadComponent } from './components/actions/read/actionRead.component'
 import { ActionUpdateComponent } from './components/actions/update/actionUpdate.component'
+import { GoalsOverviewComponent } from './components/goals/goals-overview/goals-overview.component';
 
 
 const routes: Routes = [
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: "actions/read",  component:ActionReadComponent},
   { path: "actions/create", component: ActionCreateComponent },
   { path: "actions/update",  component:ActionUpdateComponent},
+  { path: "goals/overview",  component:GoalsOverviewComponent},
   { path: "onboarding",  component:StartComponent},
   { path: "onboarding/1",  component:Onboarding1Component},
   { path: "onboarding/2",  component:Onboarding2Component},

@@ -59,7 +59,6 @@ export class GoalsSelection2Component implements OnInit, AfterViewInit {
     if(this.goals[button.id].goalState == chipState.NONE){
        button.style.boxShadow = " 0 0 0 6px #D5A7AA";
        this.goals[button.id].goalState = chipState.SELECTED;
-      console.log("selected", this.goals);
       this.selectedGoals += 1;
      } else {
        console.log("not selected",this.goals);
@@ -97,7 +96,7 @@ export class GoalsSelection2Component implements OnInit, AfterViewInit {
   }
 
   setT(){
-    this.childComponent.setTitle("Stel jouw maandelijkse doel");
+    this.childComponent.setTitle("Stel jouw doel");
   }
 
   nextPage() {

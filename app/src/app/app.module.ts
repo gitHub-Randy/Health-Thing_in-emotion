@@ -46,7 +46,7 @@ import { GoalsSelection2Component } from './components/goals/goals-selection2/go
 import { ActionReadComponent } from './components/actions/read/actionRead.component';
 import { ActionCreateComponent } from './components/actions/create/actionCreate.component';
 import { ActionUpdateComponent } from './components/actions/update/actionUpdate.component';
-
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 @NgModule({
@@ -98,7 +98,8 @@ import { ActionUpdateComponent } from './components/actions/update/actionUpdate.
     MatCheckboxModule,
     FormsModule,
     ReactiveFormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressBarModule
   ],
   providers: [    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}, AuthGuard,
 ],

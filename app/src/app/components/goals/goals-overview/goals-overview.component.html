@@ -1,1 +1,38 @@
-<p>goals-overview works!</p>
+<div class="page">
+    <app-header [title]="'Jouw doelen'"></app-header>
+    <div class="tekst">
+        <h1>{{finishedGoals}}/{{goals.length}}</h1>
+        <h3> Doelen Behaald </h3>
+    </div>
+    <div class="listDiv" scrollable="yes"> 
+        <ul class="goals">
+            <li *ngFor="let goal of goals; index as i" id="{{i}}">
+                <div class="item"> 
+                    <div class="goalName">
+                        {{goal.goalName}}
+                        <div *ngIf="goal.goalFinished === true" class="finishedGoal">
+                            <p class="done">Doel behaald!</p>
+                            <mat-icon>done</mat-icon>
+                        </div>
+                    </div>
+                    <div *ngIf="goal.goalFinished === false" class="progress">
+                        <mat-progress-bar mode="determinate" value="{{progress[i]}}"></mat-progress-bar>
+                        <p>{{goal.actionsFinished}} van de {{goal.actions}} acties behaald</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="add">
+        <button mat-fab class="addButton" (click)="addNewGoal()" >
+            <mat-icon>add</mat-icon>
+        </button>
+        <p>Doel aanmaken</p>
+    </div>
+    <div class="bottom-bar">
+        <div class="prev">
+            <button mat-fab class="prevButton" (click)="prevpage()"><img src="../../../assets/icons/prev.png"></button> 
+            <p>Vorige</p>
+        </div>
+    </div>
+</div>

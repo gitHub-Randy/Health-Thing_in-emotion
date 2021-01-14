@@ -3,64 +3,70 @@
 </div> -->
 
 <div class="content">
-    <div  class="left">
-        <mat-sidenav-container class="sidenav-container">
-            <mat-sidenav #drawer class="sidenav" fixedInViewport=true [mode]="'over'" [opened]="false">
-                <!-- <mat-toolbar>Menu</mat-toolbar> -->
-                <mat-nav-list>
-                    <div class="menuTitle">
-                        <p>MENU</p>
-                        <img id="logo" src="../../../assets/Group 38.png" alt="menuButton">
-                        <mat-icon  class="closeButton" (click)="drawer.toggle()" id="closeIcon">close</mat-icon>
+    <div class="buttons">
+        <div  class="left">
+            <mat-sidenav-container class="sidenav-container">
+                <mat-sidenav #drawer class="sidenav" fixedInViewport=true [mode]="'over'" [opened]="false">
+                    <!-- <mat-toolbar>Menu</mat-toolbar> -->
+                    <mat-nav-list>
+                        <div class="menuTitle">
+                            <p>MENU</p>
+                            <img id="logo" src="../../../assets/Group 38.png" alt="menuButton">
+                            <button class="closeButton" (click)="drawer.toggle()">
 
-                    </div>
-                    <div class="link">
-                        <a mat-list-item href="/emotions">HOE VOEL JE JE?</a>
-                        <mat-icon id="arrowRight">arrow_forward_ios
-                        </mat-icon>
+                                <mat-icon id="closeIcon">close</mat-icon>
+                            </button>
 
-
-                    </div>
-                    <div class="link">
-                        <a mat-list-item href="/dashboard">OVERZICHT</a>
-                        <mat-icon id="arrowRight">arrow_forward_ios
-                        </mat-icon>
+                        </div>
+                        <div class="link">
+                            <a mat-list-item href="/emotions">HOE VOEL JE JE?</a>
+                            <mat-icon id="arrowRight">arrow_forward_ios
+                            </mat-icon>
 
 
-                    </div>
-                    <div class="link">
-                        <a mat-list-item (click)="comingSoon()">DOELEN</a>
-                        <mat-icon id="arrowRight">arrow_forward_ios
-                        </mat-icon>
-                    </div>
+                        </div>
+                        <div class="link">
+                            <a mat-list-item href="/dashboard">OVERZICHT</a>
+                            <mat-icon id="arrowRight">arrow_forward_ios
+                            </mat-icon>
 
 
-                    <div class="link">
-                        <a mat-list-item (click)="comingSoon()">ACTIES</a>
-                        <mat-icon id="arrowRight">arrow_forward_ios
-                        </mat-icon>
-                    </div>
+                        </div>
+                        <div class="link">
+                            <a mat-list-item (click)="comingSoon()">DOELEN</a>
+                            <mat-icon id="arrowRight">arrow_forward_ios
+                            </mat-icon>
+                        </div>
 
-                    
-                    <div class="lastlink">
-                        <a mat-list-item (click)="comingSoon()">GEGEVENS</a>
-                        <mat-icon id="arrowRight">arrow_forward_ios
-                        </mat-icon>
-                    </div>
 
-                </mat-nav-list>
-            </mat-sidenav>
+                        <div class="link">
+                            <a mat-list-item (click)="comingSoon()">ACTIES</a>
+                            <mat-icon id="arrowRight">arrow_forward_ios
+                            </mat-icon>
+                        </div>
 
-        </mat-sidenav-container>
-        <button *ngIf="!hideMenu"  type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
-            <img src="../../../assets/header/menuIcon.png" alt="menuButton">
-        </button>
+                        
+                        <div class="lastlink">
+                            <a mat-list-item (click)="comingSoon()">GEGEVENS</a>
+                            <mat-icon id="arrowRight">arrow_forward_ios
+                            </mat-icon>
+                        </div>
 
+                    </mat-nav-list>
+                </mat-sidenav>
+
+            </mat-sidenav-container>
+            <button *ngIf="!hideMenu"  type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+                <img src="../../../assets/header/menuIcon.png" alt="menuButton">
+            </button>
+
+        </div>
+   
+        <div  class="right" id="right" >
+            <img *ngIf="!hideMenu" src="../../../assets/header/bellIcon.png" alt="menubutton">
+        </div>
     </div>
     <div class="center" id="center">
         {{title}}
-    </div>
-    <div  class="right" id="right" >
-        <img *ngIf="!hideMenu" src="../../../assets/header/bellIcon.png" alt="menubutton">
     </div>
 </div>

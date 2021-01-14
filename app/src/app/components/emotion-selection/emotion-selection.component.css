@@ -75,7 +75,7 @@ input[type="text"]:focus {
 }
 
 .help {
-  margin-top: 8%;
+  margin-top: 24%;
 }
 
 h3 {
@@ -557,3 +557,4 @@ height: 100%  ;
   border-radius: 18px !important;
 
 }
+

@@ -55,11 +55,6 @@ export class HeaderComponent implements OnInit {
     this.title = t;
   }
 
-  setMargin(m){
-    let t = document.getElementById('center');
-    t.style.marginTop = m;
-  }
-
  comingSoon(){
     this.snackbar.open("Coming soon", "", {
       duration: 1000,

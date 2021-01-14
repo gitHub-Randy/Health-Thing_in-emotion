@@ -106,7 +106,7 @@ export class GoalsSelectionComponent implements OnInit, AfterViewInit {
   }
 
   setT(){
-    this.childComponent.setTitle("Stel jouw maandelijkse doel");
+    this.childComponent.setTitle("Stel jouw doel");
   }  
 
   showHelp4(){
