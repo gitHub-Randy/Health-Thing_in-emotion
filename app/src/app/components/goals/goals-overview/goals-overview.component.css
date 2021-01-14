@@ -11,7 +11,7 @@
   .tekst h1{
     font-size: 50px;
     font-weight: bold;
-    margin: 33% auto auto auto;
+    margin: 45% auto auto auto;
     line-height: 1.2;
     display: flex;
     justify-content: center;
@@ -194,9 +194,6 @@
   
 }
 
-::ng-deep #center{
-  margin-top: 20% !important;
-}
 
   /* ::-webkit-scrollbar {
     -webkit-appearance: none;

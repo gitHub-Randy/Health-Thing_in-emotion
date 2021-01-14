@@ -170,8 +170,6 @@ export class EmotionStrengthsComponent implements OnInit, AfterViewInit{
   
   setT(){
     this.childComponent.setTitle("Jouw gevoelens van vandaag");
-    let t = document.getElementById('center');
-    t.style.marginTop = "10%";
   }
 
   prevpage(){

@@ -90,7 +90,7 @@ export class GoalsSelection2Component implements OnInit, AfterViewInit {
   }
 
   setT(){
-    this.childComponent.setTitle("Stel jouw maandelijkse doel");
+    this.childComponent.setTitle("Stel jouw doel");
   }
 
   

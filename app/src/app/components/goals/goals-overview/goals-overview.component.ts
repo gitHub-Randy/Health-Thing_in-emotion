@@ -76,6 +76,10 @@ export class GoalsOverviewComponent implements OnInit {
     }
   }
 
+  addNewGoal(){
+    this.router.navigateByUrl('/goals');
+  }
+
   prevpage(){
     this.router.navigate(['dashboard']);
   }

@@ -3,28 +3,39 @@
   position: absolute;
 } */
 
+
+
 .content {
   display: flex;
+  flex-direction: column;
   margin: auto;
+}
+
+.buttons{
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
 }
 
 .left {
   margin-left: 5%;
-  margin-top: 7%;
+  margin-top: 2%;
 }
 
 .right {
   margin-right: 5%;
-  margin-top: 10%;
+  margin-top: 5%;
 }
 
 .center {
-  margin-top: 20%;
   font-size: 30px;
   font-weight: 600;
   text-align: center;
   line-height: 1.2;
+  width: 75%;
+  display: flex;
+  justify-content: center;
+  margin: auto;
 }
 
 .menu {
