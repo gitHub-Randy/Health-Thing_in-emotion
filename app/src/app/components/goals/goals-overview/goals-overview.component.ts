@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-goals-overview',
@@ -11,7 +12,7 @@ export class GoalsOverviewComponent implements OnInit {
   progress = [];
   finishedGoals = 0;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.setbg();
@@ -47,7 +48,13 @@ export class GoalsOverviewComponent implements OnInit {
       actions: 4,
       actionsFinished: 4
     }
-    this.goals.push(temp1, temp2, temp3);
+    let temp4  = {
+      goalName: "Leer nieuwe mensen kennen",
+      goalFinished: true,
+      actions: 4,
+      actionsFinished: 4
+    }
+    this.goals.push(temp1, temp2, temp3, temp4);
     console.log(this.goals);
   } 
 
@@ -67,6 +74,10 @@ export class GoalsOverviewComponent implements OnInit {
         console.log("finishedGoals: ",this.finishedGoals);
       }
     }
+  }
+
+  prevpage(){
+    this.router.navigate(['dashboard']);
   }
 
 }

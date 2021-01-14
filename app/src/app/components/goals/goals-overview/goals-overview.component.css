@@ -1,6 +1,7 @@
 .page{
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 .tekst{
@@ -35,6 +36,7 @@
     width: 90%;
     /* height: 21vh; */
     box-shadow: 0 5px 60px 0px rgba(0, 0, 0, 0.2); 
+    overflow-y: scroll;
   }
 
   .goals {
@@ -79,13 +81,15 @@
     color: #C48489;
     text-transform: none;
     display: flex;
-    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 3%;
   }
 
   .done{
     font-size: 18px !important;
     font-weight: bold !important;
-    margin: 0 0 0 25% !important;
+    margin:  0 !important;
   }
 
   .finishedGoal mat-icon{
@@ -124,6 +128,11 @@
   .add{
      text-align: center;
      margin: 10% auto auto auto;
+     /* display: grid;
+     grid-column-start: 2;
+     grid-column-end: 2;
+     grid-row-start: 1;
+     grid-row-end: 2; */
   }
 
   .addButton{
@@ -149,3 +158,58 @@
       font-size: 13;
       font-weight: 400;
   }
+
+  .bottom-bar {
+    display: grid;
+    justify-content: space-between;
+    margin: auto 7% 2% 7%;
+  }
+  
+
+ .prev{
+    display: flex;
+    flex-direction: column;   
+    font-size: 13px;
+    margin: auto;
+
+  }
+
+  .prev p{
+    margin: auto;
+   }
+
+  .prevButton{
+    background-color: #ffffff;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.20);
+    display: flex;
+    justify-content: center;
+    width: 51px;
+    height: 51px;
+    padding-bottom: 15px;
+  }
+
+::ng-deep .prevButton .mat-button-wrapper{
+  padding: 13px 5px 0 0px !important;
+  
+}
+
+::ng-deep #center{
+  margin-top: 20% !important;
+}
+
+  /* ::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+::-webkit-scrollbar:vertical {
+    width: 6px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #403D46;
+    border-radius: 10px;
+    min-width: 12px;
+
+}
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #D8D8D8;
+} */

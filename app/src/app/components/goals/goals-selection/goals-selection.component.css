@@ -145,6 +145,11 @@
     color: rgb(255, 255, 255);
   }
 
+  ::ng-deep .mat-chip-list-wrapper {
+    flex-wrap: wrap !important;
+  }
+  
+
   .flexContainer {
     display: flex;
     flex-direction: column;
