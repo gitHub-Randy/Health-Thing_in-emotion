@@ -7,6 +7,7 @@ import * as kf from '../../emotion-selection/keyframes';
 import 'hammerjs';
 import { GoalService } from 'src/app/services/goal.service';
 import { TokenStorageService } from 'src/app/services/token-storage-service.service';
+import { ActionService } from 'src/app/services/action.service';
 @Component({
   selector: 'app-action-create',
   templateUrl: './action-create.component.html',
@@ -48,7 +49,7 @@ export class ActionCreateComponent implements OnInit, AfterViewInit {
   shouldChange: boolean = false;
   selectedAction = 0;
   userId: string;
-  constructor(private router: Router, private goalService: GoalService, private tokenStorage: TokenStorageService) {
+  constructor(private router: Router, private goalService: GoalService, private actionService: ActionService, private tokenStorage: TokenStorageService) {
     const navigation = this.router.getCurrentNavigation();
     const state = navigation.extras.state as { goals: any[] };
     this.goals = state.goals;
@@ -69,17 +70,17 @@ export class ActionCreateComponent implements OnInit, AfterViewInit {
 
   selectAction(button: HTMLElement) {
     console.log(button.id);
-    if(this.goals[this.currentIndex].actions[button.id].actionState == chipState.NONE){
+    if (this.goals[this.currentIndex].actions[button.id].actionState == chipState.NONE) {
       button.style.boxShadow = " 0 0 0 6px #AEC4B9";
-       this.goals[this.currentIndex].actions[button.id].actionState = chipState.SELECTED;
+      this.goals[this.currentIndex].actions[button.id].actionState = chipState.SELECTED;
       this.selectedAction += 1;
-     } else {
+    } else {
       button.style.boxShadow = "none";
 
       this.goals[this.currentIndex].actions[button.id].actionState = chipState.NONE;
       this.selectedAction -= 1;
 
-     };
+    };
   }
 
   addActions() {
@@ -144,8 +145,8 @@ export class ActionCreateComponent implements OnInit, AfterViewInit {
     console.log(action);
     if (action != '') {
       let temp = {
-          actionName: action,
-          actionState: chipState.NONE
+        actionName: action,
+        actionState: chipState.NONE
       }
       this.goals[this.currentIndex].actions.unshift(temp);
       let input = document.getElementsByClassName("customAction")[0] as HTMLInputElement;
@@ -164,33 +165,58 @@ export class ActionCreateComponent implements OnInit, AfterViewInit {
   }
 
   nextPage() {
-    console.log("not formatted goals: ",this.goals)
-    let formattedGoals = [];
+    // get selectedActions
+    let selectedActions = [];
+
     this.goals.forEach(goal => {
-      let selectedActions = [];
       goal.actions.forEach(action => {
         if (action.actionState == chipState.SELECTED) {
           selectedActions.push({
-            actionName: action.actionName
+            actionName: action.actionName,
+            done: false,
+            goalName: goal.goalName
           })
         }
       });
-      formattedGoals.push({
-        goalName: goal.goalName,
-        progress: 0,
-        finished: false,
-        actions: selectedActions
-      });
     })
-    let temp = {
-      goalData: formattedGoals,
-      userId: this.userId
-    }
-    this.goalService.addGoalData(temp).toPromise().then(data => {
+    let newActions = []
+    this.actionService.addAction(selectedActions).toPromise().then(data => {
       console.log(data)
-      this.router.navigate(['dashboard']);
+      newActions = data
+      let goalData = []
+      this.goals.forEach(goal => {
+        let tempActions = []
+        newActions.forEach(action => {
+          goal.actions.forEach(goalAction => {
+            if (action.actionName == goalAction.actionName) {
+              tempActions.push({ actionId: action._id });
+            }
+          });
+
+        })
+        let temp = {
+          goalName: goal.goalName,
+          progress: 0,
+          finished: false,
+          actions: tempActions
+        }
+        goalData.push(temp);
+      })
+
+      let formattedGoalData = {
+        goalData: goalData,
+        userId: this.userId
+      }
+      this.goalService.addGoalData(formattedGoalData).toPromise().then(data => {
+        console.log("new goals", data)
+        this.router.navigate(['dashboard']);
+
+      })
+
 
     })
+
+    
 
 
   }

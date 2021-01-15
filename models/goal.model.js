@@ -10,7 +10,7 @@ const Goals = mongoose.model(
         finished: Boolean,
         actions: [
           {
-            actionName: String,
+            actionId: String,
           },
         ],
       },

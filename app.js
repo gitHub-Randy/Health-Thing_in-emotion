@@ -36,6 +36,7 @@ const anders = require('./routes/anders');
 const emotion = require('./routes/emotion');
 const auth = require('./routes/auth');
 const goals = require('./routes/goals');
+const actions = require('./routes/actions');
 
 
 app.use(cors(corsOptions));
@@ -58,6 +59,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", anders);
 app.use("/", emotion);
 app.use("/", goals);
+app.use("/", actions);
+
 require('./routes/auth')(app);
 
 
