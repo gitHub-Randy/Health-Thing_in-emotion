@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { GoalService } from 'src/app/services/goal.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,private goalService: GoalService) { }
 
   ngOnInit(): void {
     let doc = document.getElementById('html');
@@ -25,5 +26,13 @@ export class DashboardComponent implements OnInit {
 
   goToGoals() {
     this.router.navigate(['goals/overview']);
+  }
+
+  goToActions() {
+    this.goalService.getGoals().toPromise().then(data => {
+      console.log("dashboard:",data)
+      this.router.navigate(['actions/read'],{ state: { goals: data } });
+
+    })
   }
 }

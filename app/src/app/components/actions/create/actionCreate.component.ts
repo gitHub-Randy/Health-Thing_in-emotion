@@ -189,7 +189,7 @@ export class ActionCreateComponent implements OnInit, AfterViewInit {
         newActions.forEach(action => {
           goal.actions.forEach(goalAction => {
             if (action.actionName == goalAction.actionName) {
-              tempActions.push({ actionId: action._id });
+              tempActions.push({ _id: action._id, actionName: action.actionName, done: false } );
             }
           });
 
@@ -198,15 +198,14 @@ export class ActionCreateComponent implements OnInit, AfterViewInit {
           goalName: goal.goalName,
           progress: 0,
           finished: false,
-          actions: tempActions
+          actions: tempActions,
+          userId: this.userId
         }
         goalData.push(temp);
       })
 
-      let formattedGoalData = {
-        goalData: goalData,
-        userId: this.userId
-      }
+      let formattedGoalData = goalData;
+      
       this.goalService.addGoalData(formattedGoalData).toPromise().then(data => {
         console.log("new goals", data)
         this.router.navigate(['dashboard']);

@@ -24,8 +24,9 @@ export class GoalService {
     return this.http.get(API_URL, httpOptions);
   }
 
-  updateGoal(goalName: string,newGoalName: string) {
-    return this.http.put(`${API_URL}:${goalName}`, {newGoalNme: newGoalName}, httpOptions)
+  updateGoal(goals: any): Observable<any> {
+    console.log(goals)
+    return this.http.put(`${API_URL}`, goals, httpOptions)
   }
 
   deleteAndersChip(goalName: String): Observable<any> {

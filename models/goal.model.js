@@ -1,18 +1,17 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const Goals = mongoose.model(
   "Goals",
   new mongoose.Schema({
-    chosenGoals: [
+    goalName: String,
+    progress: Number,
+    finished: Boolean,
+    actions: [
       {
-        goalName: String,
-        progress: Number,
-        finished: Boolean,
-        actions: [
-          {
-            actionId: String,
-          },
-        ],
+        _id: String,
+        actionName: String,
+        done: false,
       },
     ],
     userId: String,

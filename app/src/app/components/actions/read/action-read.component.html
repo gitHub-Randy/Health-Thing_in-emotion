@@ -1,1 +1,64 @@
-<p>read works!</p>
+<app-header [title]="'Jouw acties'"></app-header>
+<div class="page" >
+    <div class="tekst">
+        <h3>Welke acties heb jij al gedaan?</h3>
+    </div>
+    <div class="carrousel">
+        <button mat-icon-button (click)="startAnimation('slideRight')" id="leftBtn" [disabled]=" goals.length <= 1">
+            <mat-icon id="categoryArrow">keyboard_arrow_left</mat-icon>
+        </button>
+        <div class="card" [@emotionTrigger]="animationState" (@emotionTrigger.done)="resetAnimationState()"
+            (swipeRight)="startAnimation('slideRight')" (swipeLeft)="startAnimation('slideLeft')">
+            <div class="cardheader">
+                <p >{{goals[currentIndex].goalName}}</p>
+                <div class="edit">
+                    <button mat-fab class="editButton" (click)="toggleEdit()">i</button>
+                    <p>Acties bewerken</p>
+                </div>
+            </div>
+            <div class="listDiv">
+                <ul class="actions" >
+                    <li>
+                        <input class="customAction" placeholder="Typ hier je eigen actie..."
+                            (change)="addOwnAction($event.target.value)">
+                    </li>
+                    <li *ngFor="let action of goals[currentIndex].actions; index as i" id="{{i}}">
+                        <button>
+                            <mat-checkbox id="{{i}}" class="checkAction" (change)="checkAction($event.source.id)" [checked]="goals[currentIndex].actions[i].done" 
+                                 >{{action.actionName}}
+                            </mat-checkbox>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <button mat-icon-button (click)="startAnimation('slideLeft')" id="rightBtn" [disabled]="goals.length <= 1">
+            <mat-icon id="categoryArrow">keyboard_arrow_right</mat-icon>
+        </button>
+    </div>
+    <div class="swipeControls" id="swipeControls">
+        <mat-icon id="swipeCircle" style="color:#8AC8A8; background-color: #8AC8A8;" (click)="goToIndex(0)">lens
+        </mat-icon>
+        <ng-container *ngFor="let i of goals; index as x">
+            <mat-icon *ngIf="x > 0" id="swipeCircle" style="color: #FFFFFF; background-color: #FFFFFF;"
+                (click)="goToIndex(x)">lens</mat-icon>
+        </ng-container>
+    </div>
+
+
+    <div class="bottom-bar">
+        <div class="prev">
+            <button mat-fab class="prevButton" (click)="prevPage()"><img src="../../../assets/icons/prev.png"></button>
+            <p>Vorige</p>
+        </div>
+        <div class="next">
+            <button *ngIf="checkedAction == 0" mat-fab class="nextButton" style="background-color: #BADECB ;"
+                (click)="nextPage()"><img src="../../../assets/icons/next.png"></button>
+
+            <button *ngIf="checkedAction > 0" mat-fab class="nextButton" (click)="save()"><img
+                    src="../../../assets/icons/next.png"></button>
+            <p>Opslaan</p>
+        </div>
+    </div>
+</div>
