@@ -1,5 +1,5 @@
 <app-header [title]="'Jouw acties'"></app-header>
-<div class="page" >
+<div class="page">
     <div class="tekst">
         <h3>Welke acties heb jij al gedaan?</h3>
     </div>
@@ -10,23 +10,30 @@
         <div class="card" [@emotionTrigger]="animationState" (@emotionTrigger.done)="resetAnimationState()"
             (swipeRight)="startAnimation('slideRight')" (swipeLeft)="startAnimation('slideLeft')">
             <div class="cardheader">
-                <p >{{goals[currentIndex].goalName}}</p>
-                <div class="edit">
-                    <button mat-fab class="editButton" (click)="toggleEdit()">i</button>
-                    <p>Acties bewerken</p>
+                <p>{{goals[currentIndex].goalName}}</p>
+                <div class="edit" (click)="toggleEdit()">
+                    <button mat-fab class="editButton" >
+                        <img src="../../../../assets/icons/edit_green_big.png">
+                    </button>
+                    <p *ngIf="!edit">Acties bewerken</p>
+                    <p *ngIf="edit">Bewerken Afsluiten</p>
+
                 </div>
             </div>
             <div class="listDiv">
-                <ul class="actions" >
-                    <li>
+                <ul class="actions">
+                    <li *ngIf="edit">
                         <input class="customAction" placeholder="Typ hier je eigen actie..."
                             (change)="addOwnAction($event.target.value)">
                     </li>
                     <li *ngFor="let action of goals[currentIndex].actions; index as i" id="{{i}}">
                         <button>
-                            <mat-checkbox id="{{i}}" class="checkAction" (change)="checkAction($event.source.id)" [checked]="goals[currentIndex].actions[i].done" 
-                                 >{{action.actionName}}
+                            <mat-checkbox *ngIf="!edit" id="{{i}}" class="checkAction"
+                                (change)="checkAction($event.source.id)"
+                                [checked]="goals[currentIndex].actions[i].done">
                             </mat-checkbox>
+                            <p>{{action.actionName}}</p> <img (click)="deleteAction(i)" class="delete" *ngIf="edit" src="../../../../assets/icons/trash_small.png">
+
                         </button>
                     </li>
                 </ul>
@@ -53,10 +60,10 @@
             <p>Vorige</p>
         </div>
         <div class="next">
-            <button *ngIf="checkedAction == 0" mat-fab class="nextButton" style="background-color: #BADECB ;"
+            <button *ngIf="!saveNeeded" mat-fab class="nextButton" style="background-color: #BADECB ;"
                 (click)="nextPage()"><img src="../../../assets/icons/next.png"></button>
 
-            <button *ngIf="checkedAction > 0" mat-fab class="nextButton" (click)="save()"><img
+            <button *ngIf="saveNeeded" mat-fab class="nextButton" (click)="save()"><img
                     src="../../../assets/icons/next.png"></button>
             <p>Opslaan</p>
         </div>

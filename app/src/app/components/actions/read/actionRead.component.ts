@@ -8,6 +8,7 @@ import { GoalService } from 'src/app/services/goal.service';
 import { TokenStorageService } from 'src/app/services/token-storage-service.service';
 import { ActionService } from 'src/app/services/action.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-action-read',
   templateUrl: './action-read.component.html',
@@ -47,14 +48,14 @@ export class ActionReadComponent implements OnInit, AfterViewInit {
   currentIndex: number = 0;
   animationState: string;
   shouldChange: boolean = false;
-  checkedAction = 0;
+  achtionsChanged = false;
   userId: string;
-  constructor(private router: Router, private goalService: GoalService, private actionService: ActionService, private tokenStorage: TokenStorageService) {
-    const navigation = this.router.getCurrentNavigation();
-    const state = navigation.extras.state as { goals: any[] };
-    console.log(state)
-    this.goals = state.goals;
-    this.checkedAction = this.goals[this.currentIndex].progress
+  edit = false;
+  actionsToTrack;
+  saveNeeded = false;
+  constructor(private snackbar: MatSnackBar, private router: Router, private goalService: GoalService, private actionService: ActionService, private tokenStorage: TokenStorageService) {
+
+
 
 
 
@@ -67,6 +68,11 @@ export class ActionReadComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    this.goalService.getGoals().toPromise().then(data => {
+      this.goals = data
+      this.actionsToTrack = JSON.stringify(this.goals);
+
+    })
     this.setbg();
     // this.addActions();
     this.userId = this.tokenStorage.getUser().id
@@ -76,37 +82,50 @@ export class ActionReadComponent implements OnInit, AfterViewInit {
 
   toggleEdit() {
     console.log("edit")
+    this.edit = !this.edit
   }
 
 
   save() {
-    console.log("saving")
-    
-    this.goalService.updateGoal(this.goals).toPromise().then(data => {
-      console.log("updated:", data)
+
+    let updatedAll = false;
+    this.goals.forEach((goal, index) => {
+      this.goalService.updateGoal(goal).toPromise().then(data => {
+        if (index == this.goals.length - 1) {
+          console.log('yeet')
+          this.saved();
+          this.actionsToTrack = JSON.stringify(this.goals);
+          this.saveNeeded = false;
+        }
+      })
     })
+
   }
   checkAction(checkBoxId: any) {
     if (this.goals[this.currentIndex].actions[checkBoxId].done == false) {
       this.goals[this.currentIndex].actions[checkBoxId].done = true
-      this.goals[this.currentIndex].progress  += 1;
-      this.checkedAction += 1;
+      this.goals[this.currentIndex].progress += 1;
     } else {
       this.goals[this.currentIndex].actions[checkBoxId].done = false
 
       this.goals[this.currentIndex].progress -= 1;
-      this.checkedAction -=  1;
 
     }
     console.log(this.goals[this.currentIndex].actions[checkBoxId].done)
-    console.log("checked: ", this.checkedAction)
-    console.log("length: ",this.goals[this.currentIndex].actions.length)
+    console.log("length: ", this.goals[this.currentIndex].actions.length)
 
-    if (this.goals[this.currentIndex].actions.length == this.checkedAction) {
+    if (this.goals[this.currentIndex].actions.length == this.goals[this.currentIndex].progress) {
       this.goals[this.currentIndex].finished = true
     } else {
       this.goals[this.currentIndex].finished = false
 
+    }
+
+    let changedGoals = JSON.stringify(this.goals)
+    if (this.actionsToTrack != changedGoals) {
+      this.saveNeeded = true
+    } else {
+      this.saveNeeded = false
     }
   }
 
@@ -178,6 +197,12 @@ export class ActionReadComponent implements OnInit, AfterViewInit {
       this.goals[this.currentIndex].actions.unshift(temp);
       let input = document.getElementsByClassName("customAction")[0] as HTMLInputElement;
       input.value = ''
+      if (this.actionsToTrack != this.goals) {
+        this.saveNeeded = true;
+      } else {
+        this.saveNeeded = false
+
+      }
     }
   }
 
@@ -186,69 +211,21 @@ export class ActionReadComponent implements OnInit, AfterViewInit {
   }
 
   prevPage() {
-    this.router.navigate(['goals/edit']);
+    this.router.navigate(['dashboard']);
 
 
   }
 
-  nextPage() {
+  deleteAction(actionIndex: number) {
+    this.goals[this.currentIndex].actions.splice(actionIndex, 1)
+    let changedGoals = JSON.stringify(this.goals)
+    if (this.actionsToTrack != changedGoals) {
+      this.saveNeeded = true
+    } else {
+      this.saveNeeded = false
 
-    // get selectedActions
-    // let selectedActions = [];
-
-    // this.goals.forEach(goal => {
-    //   goal.actions.forEach(action => {
-    //     if (action.actionState == chipState.SELECTED) {
-    //       selectedActions.push({
-    //         actionName: action.actionName,
-    //         done: false,
-    //         goalName: goal.goalName
-    //       })
-    //     }
-    //   });
-    // })
-    // let newActions = []
-    // this.actionService.addAction(selectedActions).toPromise().then(data => {
-    //   console.log(data)
-    //   newActions = data
-    //   let goalData = []
-    //   this.goals.forEach(goal => {
-    //     let tempActions = []
-    //     newActions.forEach(action => {
-    //       goal.actions.forEach(goalAction => {
-    //         if (action.actionName == goalAction.actionName) {
-    //           tempActions.push({ actionId: action._id });
-    //         }
-    //       });
-
-    //     })
-    //     let temp = {
-    //       goalName: goal.goalName,
-    //       progress: 0,
-    //       finished: false,
-    //       actions: tempActions
-    //     }
-    //     goalData.push(temp);
-    //   })
-
-    //   let formattedGoalData = {
-    //     goalData: goalData,
-    //     userId: this.userId
-    //   }
-    //   this.goalService.addGoalData(formattedGoalData).toPromise().then(data => {
-    //     console.log("new goals", data)
-    //     this.router.navigate(['dashboard']);
-
-    //   })
-
-
-    // })
-
-
-
-
+    }
   }
-
 
 
   setbg() {
@@ -384,4 +361,11 @@ export class ActionReadComponent implements OnInit, AfterViewInit {
 
   }
 
+
+  saved() {
+    this.snackbar.open("Veranderingen opgeslagen", "", {
+      duration: 1000,
+      panelClass: "snackbar"
+    });
+  }
 }

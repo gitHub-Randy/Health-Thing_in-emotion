@@ -10,14 +10,14 @@
                 <div class="item"> 
                     <div class="goalName">
                         {{goal.goalName}}
-                        <div *ngIf="goal.goalFinished === true" class="finishedGoal">
+                        <div *ngIf="goal.finished === true" class="finishedGoal">
                             <p class="done">Doel behaald!</p>
                             <mat-icon>done</mat-icon>
                         </div>
                     </div>
-                    <div *ngIf="goal.goalFinished === false" class="progress">
+                    <div *ngIf="goal.finished === false" class="progress">
                         <mat-progress-bar mode="determinate" value="{{progress[i]}}"></mat-progress-bar>
-                        <p>{{goal.actionsFinished}} van de {{goal.actions}} acties behaald</p>
+                        <p>{{goal.progress}} van de {{goal.actions.length}} acties behaald</p>
                     </div>
                 </div>
             </li>

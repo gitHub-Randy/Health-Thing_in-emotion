@@ -6,6 +6,10 @@ const API_URL = `${environment.apiUrl}/goals`;
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
+
+const updateHttpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'text' })
+};
 @Injectable({
   providedIn: 'root'
 })

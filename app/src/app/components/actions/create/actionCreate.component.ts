@@ -8,6 +8,8 @@ import 'hammerjs';
 import { GoalService } from 'src/app/services/goal.service';
 import { TokenStorageService } from 'src/app/services/token-storage-service.service';
 import { ActionService } from 'src/app/services/action.service';
+import { MatDialog } from '@angular/material/dialog';
+import { HelpPopUp5Component } from './help-pop-up5/help-pop-up5.component';
 @Component({
   selector: 'app-action-create',
   templateUrl: './action-create.component.html',
@@ -49,13 +51,16 @@ export class ActionCreateComponent implements OnInit, AfterViewInit {
   shouldChange: boolean = false;
   selectedAction = 0;
   userId: string;
-  constructor(private router: Router, private goalService: GoalService, private actionService: ActionService, private tokenStorage: TokenStorageService) {
+  constructor(private help5: MatDialog,private router: Router, private goalService: GoalService, private actionService: ActionService, private tokenStorage: TokenStorageService) {
     const navigation = this.router.getCurrentNavigation();
     const state = navigation.extras.state as { goals: any[] };
     this.goals = state.goals;
   }
   ngAfterViewInit(): void {
     this.setT();
+    if(localStorage.getItem("checkedStrengthDialog5") == "false" || localStorage.getItem("checkedStrengthDialog5") == null) {
+      this.showHelp5();
+    }
     this.showLeftButton();
     this.showRightButton();
     this.showSwipeControls();
@@ -82,6 +87,18 @@ export class ActionCreateComponent implements OnInit, AfterViewInit {
 
     };
   }
+
+  showHelp5(){
+    this.help5.open(HelpPopUp5Component, {
+      maxWidth: '85vw',
+      height: '290px',
+      width: '600px',
+      disableClose: true,
+      backdropClass: 'backdropBackground5',
+      panelClass: 'help-panel5'
+    })
+  }
+
 
   addActions() {
     let newGoalObjects = [];

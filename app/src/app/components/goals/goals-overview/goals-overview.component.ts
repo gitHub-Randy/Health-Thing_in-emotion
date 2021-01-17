@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { GoalService } from 'src/app/services/goal.service';
 
 @Component({
   selector: 'app-goals-overview',
@@ -12,13 +13,12 @@ export class GoalsOverviewComponent implements OnInit {
   progress = [];
   finishedGoals = 0;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private goalsService: GoalService) { }
 
   ngOnInit(): void {
     this.setbg();
-    this.addGoals();
-    this.getProgress();
-    this.countFinishedGoals();
+    this.getGoals();
+    // this.getProgress();
   }
 
   setbg() {
@@ -27,6 +27,31 @@ export class GoalsOverviewComponent implements OnInit {
 
     doc.style.backgroundImage = "url('../../../assets/header/headerbackgroundRed.png')";
     doc.style.backgroundColor = "#fbe2e4"
+  }
+
+  getGoals() {
+    this.goalsService.getGoals().toPromise().then(data => {
+      this.goals = data;
+      this.goals.sort(function (a, b) {
+        if (a.finished == true && b.finished == false) {
+          return 1
+        }
+        if (a.finished == true && b.finished == true) {
+          return 0
+        }
+        if (a.finished == false && b.finished == true) {
+          return -1
+        }
+        if (a.finished == false && b.finished == false) {
+          return 0
+        }
+      })
+    }).then(data => {
+      this.getProgress();
+      this.countFinishedGoals();
+
+
+    })
   }
 
     addGoals(){
@@ -58,18 +83,19 @@ export class GoalsOverviewComponent implements OnInit {
     console.log(this.goals);
   } 
 
-  getProgress(){
-    for(let i = 0; i < this.goals.length; i++){
-      let value = this.goals[i].actionsFinished / this.goals[i].actions * 100;
+  getProgress() {
+
+    for (let i = 0; i < this.goals.length; i++){
+      let value = this.goals[i].progress / this.goals[i].actions.length * 100;
       console.log(value);
       this.progress.push(value);
-      console.log(this.progress);
+      console.log("progress: ",this.progress);
     }
   }
 
   countFinishedGoals(){
     for(let i = 0; i < this.goals.length; i++){
-      if(this.goals[i].goalFinished == true){
+      if(this.goals[i].finished == true){
         this.finishedGoals += 1;
         console.log("finishedGoals: ",this.finishedGoals);
       }

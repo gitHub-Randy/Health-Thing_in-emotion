@@ -24,12 +24,10 @@ module.exports = {
   },
 
   update(req, res) {
-    req.body.forEach(goal => {
-      Goals.findByIdAndUpdate(goal._id, goal).then(data => {
-          console.log(data)
-        })
-    });
-    return res.send("updated")
+    let goal = req.body
+    Goals.updateOne({ _id: goal._id }, goal).then(data => {
+        return res.send(data)
+      })
 
     
   }

@@ -46,7 +46,9 @@ import { GoalsSelection2Component } from './components/goals/goals-selection2/go
 import { ActionReadComponent } from './components/actions/read/actionRead.component';
 import { ActionCreateComponent } from './components/actions/create/actionCreate.component';
 import { ActionUpdateComponent } from './components/actions/update/actionUpdate.component';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { HelpPopUp5Component } from './components/actions/create/help-pop-up5/help-pop-up5.component';
+
 
 
 @NgModule({
@@ -75,6 +77,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     ActionReadComponent,
     ActionCreateComponent,
     ActionUpdateComponent,
+    HelpPopUp5Component
   ],
   imports: [
     BrowserModule,

@@ -2,20 +2,25 @@
 
 <div class="content">
     <div class="emotion">
-        <a routerLink="/emotions">            Hoe voel je je op dit moment?
+        <a routerLink="/emotions"> Hoe voel je je op dit moment?
         </a>
-        
+
     </div>
     <div class="history">
-        <span>Historie  COMING SOON</span>
+        <span>Historie COMING SOON</span>
     </div>
-    <div class="goals" (click)="goToGoals()" >
-        <span>Doelen</span>
+    <div class="goals" (click)="goToGoals()">
+        <p class="amountGoals">{{amountOfFinishedGoals}}/{{amountOfGoals}}</p>
+        <p class="subGoalText">Doelen behaald</p>
+
     </div>
     <div class="actions" (click)="goToActions()">
-        <span>Acties </span>
+        <p class="actionHeading">Start jouw actie om je doel te bereiken</p>
+        <p class="action" *ngIf="action.length > 0">{{action}}</p>
+        <p class="action" *ngIf="action.length == 0">Je hebt op dit moment geen actieve doelen met acties</p>
+
     </div>
     <div class="gif">
-        <span>GIF  COMING SOON</span>
+        <span>GIF COMING SOON</span>
     </div>
 </div>
