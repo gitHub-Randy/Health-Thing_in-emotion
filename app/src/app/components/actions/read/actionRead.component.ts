@@ -104,11 +104,11 @@ export class ActionReadComponent implements OnInit, AfterViewInit {
   checkAction(checkBoxId: any) {
     if (this.goals[this.currentIndex].actions[checkBoxId].done == false) {
       this.goals[this.currentIndex].actions[checkBoxId].done = true
-      this.goals[this.currentIndex].progress += 1;
+      this.goals[this.currentIndex].progress++;
     } else {
       this.goals[this.currentIndex].actions[checkBoxId].done = false
 
-      this.goals[this.currentIndex].progress -= 1;
+      this.goals[this.currentIndex].progress--;
 
     }
     console.log(this.goals[this.currentIndex].actions[checkBoxId].done)
@@ -192,11 +192,12 @@ export class ActionReadComponent implements OnInit, AfterViewInit {
     if (action != '') {
       let temp = {
         actionName: action,
-        actionState: chipState.NONE
+        done: false
       }
       this.goals[this.currentIndex].actions.unshift(temp);
       let input = document.getElementsByClassName("customAction")[0] as HTMLInputElement;
       input.value = ''
+      this.goals[this.currentIndex].finished = false;
       if (this.actionsToTrack != this.goals) {
         this.saveNeeded = true;
       } else {
@@ -218,7 +219,20 @@ export class ActionReadComponent implements OnInit, AfterViewInit {
 
   deleteAction(actionIndex: number) {
     this.goals[this.currentIndex].actions.splice(actionIndex, 1)
-    let changedGoals = JSON.stringify(this.goals)
+    let newProgress = 0;
+    this.goals[this.currentIndex].actions.forEach(action => {
+      if (action.done == true) {
+        newProgress++;
+        }
+    });
+    this.goals[this.currentIndex].progress = newProgress;
+    if (this.goals[this.currentIndex].actions.length == this.goals[this.currentIndex].progress) {
+      this.goals[this.currentIndex].finished = true;
+    } else {
+      this.goals[this.currentIndex].finished = false;
+
+    }
+    let changedGoals = this.goals;
     if (this.actionsToTrack != changedGoals) {
       this.saveNeeded = true
     } else {
